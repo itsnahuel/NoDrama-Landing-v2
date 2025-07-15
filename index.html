@@ -1037,8 +1037,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   data-navigation-position="below"
   data-logo-position="center"
   style="
-    --logo-width: 130px;
-    --mobile-logo-width: 100px;
+    --logo-width: auto;
+    --mobile-logo-width: auto;
     --color-cart-count-transparent: #000000;
     --color-text-transparent: #ffffff;
     --divider-width: 0px;
@@ -1048,7 +1048,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     Skip to content
   </a>
 
-  <div class="header__inner">
+  <div class="header__inner" style="position: relative;">
     <div class="header__row header__row-desktop upper  ">
       <div class="header__row-segment header__row-segment-desktop left">
 </div>
@@ -4495,25 +4495,26 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
 
     </nav>
       </div>
-    </div><div class="header__row header__row-desktop logo-only">
-        <h1 class="header__logo">
+    </div><div class="header__row header__row-desktop logo-only" style="position: relative !important;">
+        <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
     <a
       class="header__logo-link"
       href="index.html"
       
         aria-label="NoDrama Records"
       
+      style="display: block !important; text-align: center !important; width: auto !important;"
     ><div
     class="
       image
       regular-logo
       
       
-      animation--lazy-load
+      
     "
-    style=""
+    style="display: flex; justify-content: center; align-items: center; width: 100%;"
   >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; display: inline-block;">NoDrama Records</span>
+    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
     
 
 
@@ -4742,24 +4743,25 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   </button>
         </div>
 
-        <h1 class="header__logo">
+        <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
     <a
       class="header__logo-link"
       href="index.html"
       
         aria-label="NoDrama Records"
       
+      style="display: block !important; text-align: center !important; width: auto !important;"
     ><div
     class="
       image
       regular-logo
       
       
-      animation--lazy-load
+      
     "
-    style=""
+    style="display: flex; justify-content: center; align-items: center; width: 100%;"
   >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; display: inline-block;">NoDrama Records</span>
+    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
     
 
 
@@ -5009,11 +5011,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="collections/all.html"
+      href="index.html"
       
     >
       <span class="">
-        CLOTHING
+        HOME
       </span></a>
 
     
@@ -5028,11 +5030,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="collections/music.html"
+      href="pages/events.html"
       
     >
       <span class="">
-        MUSIC
+        EVENTS
       </span></a>
 
     
@@ -5047,11 +5049,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="pages/social.html"
+      href="pages/artists.html"
       
     >
       <span class="">
-        SOCIAL
+        ARTISTS
       </span></a>
 
     
@@ -5066,11 +5068,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="pages/demo-submissions.html"
+      href="pages/releases.html"
       
     >
       <span class="">
-        DEMO SUBMISSION
+        RELEASES
       </span></a>
 
     
@@ -5085,11 +5087,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="pages/about-us.html"
+      href="pages/merch.html"
       
     >
       <span class="">
-        ABOUT 
+        MERCH
       </span></a>
 
     
@@ -5104,11 +5106,49 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     <a
       data-item="link"
       class="drawer-menu__link  "
-      href="https://chris-lake.com/"
+      href="pages/studio.html"
       
     >
       <span class="">
-        CHRIS LAKE
+        STUDIO
+      </span></a>
+
+    
+</li><li
+    class="
+      drawer-menu__item
+      
+      
+    "
+    data-list-item
+  >
+    <a
+      data-item="link"
+      class="drawer-menu__link  "
+      href="pages/podcasts-streams.html"
+      
+    >
+      <span class="">
+        PODCASTS/STREAMS
+      </span></a>
+
+    
+</li><li
+    class="
+      drawer-menu__item
+      
+      
+    "
+    data-list-item
+  >
+    <a
+      data-item="link"
+      class="drawer-menu__link  "
+      href="pages/contact.html"
+      
+    >
+      <span class="">
+        CONTACT
       </span></a>
 
     
@@ -10339,6 +10379,7 @@ rgba(255, 255, 255, 0.1);
             loop
             muted
             src="https://cdn.shopify.com/videos/c/o/v/e1711dcbab2a43d08ff47c0b3d33b71c.mp4"
+            style="display: none;"
           ></video>
           
 

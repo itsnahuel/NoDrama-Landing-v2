@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .nav-link { display: inline-block; margin-right: 20px; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 5px; }
+        .nav-link:hover { background: #555; }
+        .current-page { font-size: 24px; color: #333; margin-bottom: 20px; }
+        .test-info { background: #f0f0f0; padding: 20px; margin-top: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="current-page">TEST PAGE: /pages/test_navigation.html</div>
+    
+    <nav>
+        <a href="../index.html" class="nav-link">HOME</a>
+        <a href="events.html" class="nav-link">EVENTS</a>
+        <a href="artists.html" class="nav-link">ARTISTS</a>
+        <a href="releases.html" class="nav-link">RELEASES</a>
+        <a href="merch.html" class="nav-link">MERCH</a>
+        <a href="studio.html" class="nav-link">STUDIO</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+    </nav>
+    
+    <div class="test-info">
+        <h3>Navigation Test</h3>
+        <p>This is a minimal test page with NO JavaScript interference.</p>
+        <p>Click on the navigation links above to test:</p>
+        <ul>
+            <li><strong>HOME</strong> - Should go to main index.html</li>
+            <li><strong>EVENTS</strong> - Should go to pages/events.html</li>
+            <li><strong>ARTISTS</strong> - Should go to pages/artists.html</li>
+            <li><strong>RELEASES</strong> - Should go to pages/releases.html</li>
+        </ul>
+        <p>If these links work correctly, the issue is in the JavaScript of the other pages.</p>
+    </div>
+</body>
+</html>
