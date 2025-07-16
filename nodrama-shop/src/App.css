@@ -1,0 +1,349 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header styles */
+.App-header {
+  background-color: #000;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+/* Main content */
+.main-content {
+  min-height: calc(100vh - 80px);
+  padding: 2rem 0;
+}
+
+/* Home page styles */
+.home-page {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.home-page h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.home-page p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #000;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #333;
+}
+
+/* Shop page styles */
+.shop-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.cart-toggle {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-toggle:hover {
+  background-color: #333;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Product card styles */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.product-pricing {
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 0.5rem;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #333;
+}
+
+/* Cart styles */
+.cart {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-controls button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart-total {
+  text-align: right;
+  border-top: 2px solid #ddd;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.checkout-btn {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.checkout-btn:hover {
+  background-color: #333;
+}
+
+/* Payment form styles */
+.payment-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.payment-total {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pay-button {
+  width: 100%;
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.pay-button:hover {
+  background-color: #333;
+}
+
+.pay-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Square payment form container */
+#card-container {
+  margin: 1rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .shop-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* About and Contact pages */
+.about-page, .contact-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-page h1, .contact-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-page p, .contact-page p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
