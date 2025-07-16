@@ -189,6 +189,107 @@
        url("cdn/fonts/helvetica/helvetica_o9.7df193e829b33b5fb035e6b30c9c1ad282f5ccc0ae7d.woff?h1=d3d3LWNocmlzLWxha2UtY29tLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;h2=YmxhY2tib29rcmVjcy5jb20&amp;hmac=403e396e99d36572dbab0a7e46296d01447a1f415f4cf00c10773f76f48d9752") format("woff");
 }
 
+  /* Aurora Background Animation */
+  .aurora-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .aurora-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+      rgba(100, 255, 218, 0.1) 0%,
+      rgba(200, 100, 255, 0.1) 25%,
+      rgba(255, 100, 200, 0.1) 50%,
+      rgba(100, 200, 255, 0.1) 75%,
+      rgba(255, 200, 100, 0.1) 100%
+    );
+    animation: aurora-wave 8s ease-in-out infinite;
+    filter: blur(30px);
+  }
+
+  .aurora-layer-1 {
+    animation-delay: 0s;
+    animation-duration: 8s;
+    background: linear-gradient(45deg, 
+      rgba(64, 224, 208, 0.15) 0%,
+      rgba(138, 43, 226, 0.15) 50%,
+      rgba(255, 20, 147, 0.15) 100%
+    );
+  }
+
+  .aurora-layer-2 {
+    animation-delay: -2s;
+    animation-duration: 12s;
+    background: linear-gradient(135deg, 
+      rgba(0, 191, 255, 0.12) 0%,
+      rgba(148, 0, 211, 0.12) 50%,
+      rgba(255, 105, 180, 0.12) 100%
+    );
+  }
+
+  .aurora-layer-3 {
+    animation-delay: -4s;
+    animation-duration: 16s;
+    background: linear-gradient(-45deg, 
+      rgba(127, 255, 212, 0.08) 0%,
+      rgba(186, 85, 211, 0.08) 50%,
+      rgba(255, 182, 193, 0.08) 100%
+    );
+  }
+
+  .aurora-layer-4 {
+    animation-delay: -6s;
+    animation-duration: 20s;
+    background: linear-gradient(90deg, 
+      rgba(72, 209, 204, 0.1) 0%,
+      rgba(123, 104, 238, 0.1) 50%,
+      rgba(255, 160, 122, 0.1) 100%
+    );
+  }
+
+  @keyframes aurora-wave {
+    0%, 100% {
+      transform: translateX(-100%) translateY(-100%) rotate(0deg);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateX(0%) translateY(0%) rotate(180deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateX(50%) translateY(50%) rotate(270deg);
+      opacity: 0.6;
+    }
+  }
+
+  /* Ensure aurora background is behind video but above other content */
+  .video-hero__video-wrapper {
+    z-index: 2;
+  }
+
+  .video-hero__overlay {
+    z-index: 3;
+  }
+
+  .video-hero__text-container-wrapper {
+    z-index: 4;
+  }
+
   
 
   :root {
@@ -1885,6 +1986,12 @@ rgba(255, 255, 255, 0.1);
 </button>
 
         </div></div>
+    <div class="aurora-background">
+      <div class="aurora-layer aurora-layer-1"></div>
+      <div class="aurora-layer aurora-layer-2"></div>
+      <div class="aurora-layer aurora-layer-3"></div>
+      <div class="aurora-layer aurora-layer-4"></div>
+    </div>
     <div class="video-hero__overlay"></div>
     <div class="video-hero__text-container-wrapper"><div class="video-hero__text-container section-blocks animation--section-blocks"></div>
     </div>
