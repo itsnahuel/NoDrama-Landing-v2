@@ -189,8 +189,8 @@
        url("cdn/fonts/helvetica/helvetica_o9.7df193e829b33b5fb035e6b30c9c1ad282f5ccc0ae7d.woff?h1=d3d3LWNocmlzLWxha2UtY29tLmFjY291bnQubXlzaG9waWZ5LmNvbQ&amp;h2=YmxhY2tib29rcmVjcy5jb20&amp;hmac=403e396e99d36572dbab0a7e46296d01447a1f415f4cf00c10773f76f48d9752") format("woff");
 }
 
-  /* Aurora Background Animation */
-  .aurora-background {
+  /* Dark Veil Background Effect - Reactbits Style */
+  .dark-veil-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -199,87 +199,111 @@
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
+    background: #000000;
   }
 
-  .aurora-layer {
+  .dark-veil-layer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, 
-      rgba(100, 255, 218, 0.1) 0%,
-      rgba(200, 100, 255, 0.1) 25%,
-      rgba(255, 100, 200, 0.1) 50%,
-      rgba(100, 200, 255, 0.1) 75%,
-      rgba(255, 200, 100, 0.1) 100%
-    );
-    animation: aurora-wave 8s ease-in-out infinite;
-    filter: blur(30px);
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        rgba(100, 50, 255, 1.0) 0.5px,
+        transparent 1px
+      );
+    background-size: 100% 2px;
+    animation: dark-veil-scanlines 26.67s linear infinite;
+    opacity: 0.8;
+    mix-blend-mode: screen;
   }
 
-  .aurora-layer-1 {
-    animation-delay: 0s;
-    animation-duration: 8s;
-    background: linear-gradient(45deg, 
-      rgba(64, 224, 208, 0.15) 0%,
-      rgba(138, 43, 226, 0.15) 50%,
-      rgba(255, 20, 147, 0.15) 100%
-    );
+  .dark-veil-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 2%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 2%),
+      radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 1%);
+    background-size: 2px 2px, 3px 3px, 1px 1px;
+    animation: dark-veil-noise 2s linear infinite;
+    opacity: 0.05;
   }
 
-  .aurora-layer-2 {
-    animation-delay: -2s;
-    animation-duration: 12s;
-    background: linear-gradient(135deg, 
-      rgba(0, 191, 255, 0.12) 0%,
-      rgba(148, 0, 211, 0.12) 50%,
-      rgba(255, 105, 180, 0.12) 100%
-    );
+  .dark-veil-warp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background: 
+      radial-gradient(ellipse at 30% 70%, rgba(80, 40, 200, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 30%, rgba(120, 60, 255, 0.2) 0%, transparent 50%);
+    animation: dark-veil-warp 13.33s ease-in-out infinite;
+    filter: blur(80px);
+    transform-origin: center;
+    mix-blend-mode: screen;
   }
 
-  .aurora-layer-3 {
-    animation-delay: -4s;
-    animation-duration: 16s;
-    background: linear-gradient(-45deg, 
-      rgba(127, 255, 212, 0.08) 0%,
-      rgba(186, 85, 211, 0.08) 50%,
-      rgba(255, 182, 193, 0.08) 100%
-    );
+  @keyframes dark-veil-scanlines {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
   }
 
-  .aurora-layer-4 {
-    animation-delay: -6s;
-    animation-duration: 20s;
-    background: linear-gradient(90deg, 
-      rgba(72, 209, 204, 0.1) 0%,
-      rgba(123, 104, 238, 0.1) 50%,
-      rgba(255, 160, 122, 0.1) 100%
-    );
-  }
-
-  @keyframes aurora-wave {
+  @keyframes dark-veil-noise {
     0%, 100% {
-      transform: translateX(-100%) translateY(-100%) rotate(0deg);
-      opacity: 0.3;
+      transform: translate(0, 0);
+      opacity: 0.05;
     }
     25% {
-      transform: translateX(-50%) translateY(-50%) rotate(90deg);
-      opacity: 0.6;
+      transform: translate(-1px, -0.5px);
+      opacity: 0.03;
     }
     50% {
-      transform: translateX(0%) translateY(0%) rotate(180deg);
-      opacity: 0.8;
+      transform: translate(0.5px, -1px);
+      opacity: 0.07;
     }
     75% {
-      transform: translateX(50%) translateY(50%) rotate(270deg);
-      opacity: 0.6;
+      transform: translate(-0.5px, 0.5px);
+      opacity: 0.04;
+    }
+  }
+
+  @keyframes dark-veil-warp {
+    0%, 100% {
+      transform: scale(1) rotate(0deg) skew(0deg, 0deg);
+    }
+    25% {
+      transform: scale(1.02) rotate(1.25deg) skew(2.5deg, 1deg);
+    }
+    50% {
+      transform: scale(0.98) rotate(-0.75deg) skew(-1.5deg, 2deg);
+    }
+    75% {
+      transform: scale(1.01) rotate(0.5deg) skew(2deg, -1.25deg);
     }
   }
 
   /* Ensure aurora background is behind video but above other content */
   .video-hero__video-wrapper {
     z-index: 2;
+    display: none;
+  }
+  
+  .video-hero__image {
+    display: none;
   }
 
   .video-hero__overlay {
@@ -2112,11 +2136,10 @@ rgba(255, 255, 255, 0.1);
 </button>
 
         </div></div>
-    <div class="aurora-background">
-      <div class="aurora-layer aurora-layer-1"></div>
-      <div class="aurora-layer aurora-layer-2"></div>
-      <div class="aurora-layer aurora-layer-3"></div>
-      <div class="aurora-layer aurora-layer-4"></div>
+    <div class="dark-veil-background">
+      <div class="dark-veil-layer"></div>
+      <div class="dark-veil-noise"></div>
+      <div class="dark-veil-warp"></div>
     </div>
     <div class="video-hero__overlay"></div>
     <div class="video-hero__text-container-wrapper"><div class="video-hero__text-container section-blocks animation--section-blocks"></div>
