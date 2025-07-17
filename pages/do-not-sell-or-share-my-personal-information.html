@@ -890,6 +890,138 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   data-resource-timing-sampling-rate="10"
   data-shs="true"
 ></script>
+<style>
+.header__logo .image__img {
+  display: none !important;
+}
+
+  /* Fuzzy Text Effect */
+  .fuzzy-text {
+    position: relative;
+    display: inline-block;
+    animation: fuzzy-pulse 3s ease-in-out infinite;
+    filter: blur(0px);
+    transition: all 0.3s ease;
+  }
+
+  .fuzzy-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.08),
+      0 0 20px rgba(255, 255, 255, 0.06),
+      0 0 30px rgba(255, 255, 255, 0.04),
+      0 0 40px rgba(255, 255, 255, 0.02);
+    animation: fuzzy-glow 2s ease-in-out infinite alternate;
+    z-index: -1;
+  }
+
+  .fuzzy-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    text-shadow: 
+      0 0 5px rgba(100, 255, 218, 0.07),
+      0 0 15px rgba(200, 100, 255, 0.05),
+      0 0 25px rgba(255, 100, 200, 0.03);
+    animation: fuzzy-shimmer 4s ease-in-out infinite;
+    z-index: -2;
+  }
+
+  @keyframes fuzzy-pulse {
+    0%, 100% {
+      filter: blur(0px);
+      text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.08),
+        0 0 10px rgba(255, 255, 255, 0.06),
+        0 0 15px rgba(255, 255, 255, 0.04);
+    }
+    50% {
+      filter: blur(0.5px);
+      text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.12),
+        0 0 16px rgba(255, 255, 255, 0.08),
+        0 0 24px rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  @keyframes fuzzy-glow {
+    0% {
+      text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.10),
+        0 0 25px rgba(255, 255, 255, 0.08),
+        0 0 35px rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  @keyframes fuzzy-shimmer {
+    0% {
+      text-shadow: 
+        0 0 5px rgba(100, 255, 218, 0.05),
+        0 0 15px rgba(200, 100, 255, 0.03),
+        0 0 25px rgba(255, 100, 200, 0.02);
+    }
+    33% {
+      text-shadow: 
+        0 0 8px rgba(255, 100, 200, 0.08),
+        0 0 18px rgba(100, 255, 218, 0.06),
+        0 0 28px rgba(200, 100, 255, 0.04);
+    }
+    66% {
+      text-shadow: 
+        0 0 6px rgba(200, 100, 255, 0.09),
+        0 0 16px rgba(255, 100, 200, 0.07),
+        0 0 26px rgba(100, 255, 218, 0.05);
+    }
+    100% {
+      text-shadow: 
+        0 0 5px rgba(100, 255, 218, 0.05),
+        0 0 15px rgba(200, 100, 255, 0.03),
+        0 0 25px rgba(255, 100, 200, 0.02);
+    }
+  }
+
+  .fuzzy-text:hover {
+    filter: blur(0px);
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.20),
+      0 0 20px rgba(255, 255, 255, 0.16),
+      0 0 30px rgba(255, 255, 255, 0.12);
+  }
+
+  .fuzzy-text:hover::before {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.18),
+      0 0 20px rgba(255, 255, 255, 0.14),
+      0 0 30px rgba(255, 255, 255, 0.10),
+      0 0 40px rgba(255, 255, 255, 0.08);
+    animation-play-state: running;
+  }
+
+  .fuzzy-text:hover::after {
+    text-shadow: 
+      0 0 5px rgba(100, 255, 218, 0.16),
+      0 0 15px rgba(200, 100, 255, 0.12),
+      0 0 25px rgba(255, 100, 200, 0.08);
+    animation-play-state: running;
+  }
+
+</style>
 </head>
 
   <body class="template-page">
@@ -1128,7 +1260,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     "
     style="display: flex; justify-content: center; align-items: center; width: 100%;">
       >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
   >
     
 
@@ -1188,7 +1320,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     "
     style="display: flex; justify-content: center; align-items: center; width: 100%;">
       >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
   >
     
 
@@ -1359,7 +1491,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     "
     style="display: flex; justify-content: center; align-items: center; width: 100%;">
       >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
   >
     
 
@@ -1419,7 +1551,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     "
     style="display: flex; justify-content: center; align-items: center; width: 100%;">
       >
-    <span style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
   >
     
 
@@ -2137,9 +2269,7 @@ rgba(255, 255, 255, 0.1);
   loading="lazy" 
   width="2400" 
   height="679" 
-  src="../cdn/shop/files/UC-title-logo175f.png?v=1703215699&amp;width=320" 
   
-  srcset="//www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2400 2400w" 
   sizes="100vw"
   onload="javascript: this.closest('.image').classList.add('loaded')"
 />
@@ -2179,9 +2309,7 @@ rgba(255, 255, 255, 0.1);
   loading="lazy" 
   width="2400" 
   height="679" 
-  src="../cdn/shop/files/UC-title-logo175f.png?v=1703215699&amp;width=320" 
   
-  srcset="//www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/UC-title-logo.png?v=1703215699&width=2400 2400w" 
   sizes="100vw"
   onload="javascript: this.closest('.image').classList.add('loaded')"
 />
@@ -2190,160 +2318,7 @@ rgba(255, 255, 255, 0.1);
 
     <div class="image-hero__text-container-wrapper">
       <div class="image-hero__text-container"><a
-            href="https://shop.underconstructionpresents.com/"
             class="image-hero__image-link"
-            aria-label="https://shop.underconstructionpresents.com/"
-          ></a><div class="image-hero__text-container-inner section-blocks animation--section-blocks"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-</section><section id="shopify-section-sections--24489168535856__image_hero_ytdPR9" class="shopify-section shopify-section-group-footer-group shopify-section--full-width"><div
-  class="
-    image-hero
-    image-hero--image-aspect-original
-    image-hero--text-center
-    image-hero--text-mobile-center
-    section
-    section--full-width
-    section--vertical-padding-none
-    
-      animation
-      animation--image-hero
-    
-  "
-  data-section-id="sections--24489168535856__image_hero_ytdPR9"
-  data-section-type="image-hero"
-  style="
-    --custom-height: 50vh;
-    --custom-height-mobile: 50vh;
-    --text-horizontal-position: center;
-    --text-vertical-position: center;
-    --text-horizontal-position-mobile: center;
-    --text-vertical-position-mobile: center;
-    --color-text: #ffffff;
-    --color-text-link: #ffffff;
-    --overlay-background: #000000;
-    
-    --overlay-opacity: 0.0;
-    
---color-text-overlay-button: #000000; --color-text-overlay-button-alpha:
-rgba(0, 0, 0, 0.6); --color-background-overlay-button: #ffffff;
---color-background-overlay-button-hover: #ededed;--color-background-overlay-button-alpha:
-rgba(255, 255, 255, 0.6); --color-background-overlay-outline-button-alpha:
-rgba(255, 255, 255, 0.1);
-
-  "
->
-  <div class="image-hero__inner">
-    <div class="image-hero__image-container"><div
-    class="
-      image
-      image-hero__image image-hero__image--mobile
-      
-      image--animate
-      
-    "
-    style="--focal-alignment: center;"
-  >
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-<img
-  alt="" 
-  class="image__img" 
-  loading="lazy" 
-  width="5312" 
-  height="2280" 
-  src="../cdn/shop/files/SPOTIFY19e97.png?v=1705711824&amp;width=320" 
-  
-  srcset="//www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=3000 3000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=3500 3500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=4000 4000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=4500 4500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=5000 5000w" 
-  sizes="100vw"
-  onload="javascript: this.closest('.image').classList.add('loaded')"
-/>
-  </div><div
-    class="
-      image
-      image-hero__image
-      
-      image--animate
-      
-    "
-    style="--focal-alignment: center;"
-  >
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-<img
-  alt="" 
-  class="image__img" 
-  loading="lazy" 
-  width="5312" 
-  height="2280" 
-  src="../cdn/shop/files/SPOTIFY19e97.png?v=1705711824&amp;width=320" 
-  
-  srcset="//www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=3000 3000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=3500 3500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=4000 4000w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=4500 4500w, //www.blackbookrecs.com/cdn/shop/files/SPOTIFY1.png?v=1705711824&width=5000 5000w" 
-  sizes="100vw"
-  onload="javascript: this.closest('.image').classList.add('loaded')"
-/>
-  </div></div>
-    <div class="image-hero__overlay"></div>
-
-    <div class="image-hero__text-container-wrapper">
-      <div class="image-hero__text-container"><a
-            href="https://www.antiupmusic.com/"
-            class="image-hero__image-link"
-            aria-label="https://www.antiupmusic.com/"
           ></a><div class="image-hero__text-container-inner section-blocks animation--section-blocks"></div>
       </div>
     </div>
