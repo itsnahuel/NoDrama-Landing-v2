@@ -224,132 +224,59 @@
   .video-hero__text-container-wrapper {
     z-index: 4;
   }
-
-  /* Fuzzy Text Effect */
-  .fuzzy-text {
+  
+  /* Navigation positioning and styling */
+  .header__row.lower {
+    overflow: visible;
+  }
+  
+  .header__links-primary-scroll-container {
+    overflow: visible !important;
+  }
+  
+  .header__links-primary {
+    overflow: visible !important;
+  }
+  
+  header {
+    overflow: visible !important;
+  }
+  
+  .fs-navigation-base {
+    font-size: 20px !important;
+    transform: translateY(40px);
+    z-index: 9999;
     position: relative;
-    display: inline-block;
-    animation: fuzzy-pulse 3s ease-in-out infinite;
-    filter: blur(0px);
-    transition: all 0.3s ease;
+  }
+  
+  /* Fix video hero blocking navigation */
+  .video-hero__overlay {
+    margin-top: 40px !important;
+    z-index: 2 !important;
+  }
+  
+  /* Ensure the video hero section doesn't start at the very top */
+  .video-hero {
+    margin-top: 40px !important;
+  }
+  
+  /* Adjust video hero height to account for navigation space */
+  .video-hero {
+    height: calc(100vh - 40px) !important;
+  }
+  
+  /* Ensure the main content area doesn't overlap with navigation */
+  .main {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  /* Ensure header-overlay doesn't block navigation */
+  .header-overlay {
+    z-index: 1 !important;
+    pointer-events: none !important;
   }
 
-  .fuzzy-text::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    text-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.08),
-      0 0 20px rgba(255, 255, 255, 0.06),
-      0 0 30px rgba(255, 255, 255, 0.04),
-      0 0 40px rgba(255, 255, 255, 0.02);
-    animation: fuzzy-glow 2s ease-in-out infinite alternate;
-    z-index: -1;
-  }
-
-  .fuzzy-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    text-shadow: 
-      0 0 5px rgba(100, 255, 218, 0.07),
-      0 0 15px rgba(200, 100, 255, 0.05),
-      0 0 25px rgba(255, 100, 200, 0.03);
-    animation: fuzzy-shimmer 4s ease-in-out infinite;
-    z-index: -2;
-  }
-
-  @keyframes fuzzy-pulse {
-    0%, 100% {
-      filter: blur(0px);
-      text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.08),
-        0 0 10px rgba(255, 255, 255, 0.06),
-        0 0 15px rgba(255, 255, 255, 0.04);
-    }
-    50% {
-      filter: blur(0.5px);
-      text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.12),
-        0 0 16px rgba(255, 255, 255, 0.08),
-        0 0 24px rgba(255, 255, 255, 0.06);
-    }
-  }
-
-  @keyframes fuzzy-glow {
-    0% {
-      text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.06),
-        0 0 20px rgba(255, 255, 255, 0.04),
-        0 0 30px rgba(255, 255, 255, 0.02);
-    }
-    100% {
-      text-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.10),
-        0 0 25px rgba(255, 255, 255, 0.08),
-        0 0 35px rgba(255, 255, 255, 0.06);
-    }
-  }
-
-  @keyframes fuzzy-shimmer {
-    0% {
-      text-shadow: 
-        0 0 5px rgba(100, 255, 218, 0.05),
-        0 0 15px rgba(200, 100, 255, 0.03),
-        0 0 25px rgba(255, 100, 200, 0.02);
-    }
-    33% {
-      text-shadow: 
-        0 0 8px rgba(255, 100, 200, 0.08),
-        0 0 18px rgba(100, 255, 218, 0.06),
-        0 0 28px rgba(200, 100, 255, 0.04);
-    }
-    66% {
-      text-shadow: 
-        0 0 6px rgba(200, 100, 255, 0.09),
-        0 0 16px rgba(255, 100, 200, 0.07),
-        0 0 26px rgba(100, 255, 218, 0.05);
-    }
-    100% {
-      text-shadow: 
-        0 0 5px rgba(100, 255, 218, 0.05),
-        0 0 15px rgba(200, 100, 255, 0.03),
-        0 0 25px rgba(255, 100, 200, 0.02);
-    }
-  }
-
-  .fuzzy-text:hover {
-    filter: blur(0px);
-    text-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.20),
-      0 0 20px rgba(255, 255, 255, 0.16),
-      0 0 30px rgba(255, 255, 255, 0.12);
-  }
-
-  .fuzzy-text:hover::before {
-    text-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.18),
-      0 0 20px rgba(255, 255, 255, 0.14),
-      0 0 30px rgba(255, 255, 255, 0.10),
-      0 0 40px rgba(255, 255, 255, 0.08);
-    animation-play-state: running;
-  }
-
-  .fuzzy-text:hover::after {
-    text-shadow: 
-      0 0 5px rgba(100, 255, 218, 0.16),
-      0 0 15px rgba(200, 100, 255, 0.12),
-      0 0 25px rgba(255, 100, 200, 0.08);
-    animation-play-state: running;
-  }
 
   
 
@@ -1298,9 +1225,10 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
       
       
     "
-    style="display: flex; justify-content: center; align-items: center; width: 100%;"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;"
   >
-    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <canvas id="fuzzy-text-canvas-1" style="display: block;"></canvas>
+    <canvas id="fuzzy-text-location-1" style="display: block; margin-top: 10px;"></canvas>
     
 
 
@@ -1523,9 +1451,10 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
       
       
     "
-    style="display: flex; justify-content: center; align-items: center; width: 100%;"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;"
   >
-    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    <canvas id="fuzzy-text-canvas-1" style="display: block;"></canvas>
+    <canvas id="fuzzy-text-location-1" style="display: block; margin-top: 10px;"></canvas>
     
 
 
@@ -3585,6 +3514,247 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
     document.addEventListener('DOMContentLoaded', initDarkVeil);
   } else {
     initDarkVeil();
+  }
+})();
+
+// FuzzyText Effect - ReactBits Implementation
+(function() {
+  'use strict';
+  
+  console.log('FuzzyText effect loading...');
+  
+  function createFuzzyText(canvasId, text, options = {}) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) {
+      console.error('Canvas not found:', canvasId);
+      return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Configuration with your specified values
+    const config = {
+      fontSize: options.fontSize || 'clamp(2rem, 10vw, 10rem)',
+      fontWeight: options.fontWeight || 900,
+      fontFamily: options.fontFamily || 'Arial, sans-serif',
+      color: options.color || '#ffffff',
+      baseIntensity: options.baseIntensity || 0.2,
+      hoverIntensity: options.hoverIntensity || 0.5,
+      enableHover: options.enableHover !== false,
+      ...options
+    };
+    
+    let animationFrameId;
+    let isCancelled = false;
+    let isHovering = false;
+    
+    const init = async () => {
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+      if (isCancelled) return;
+      
+      const computedFontFamily = config.fontFamily;
+      const fontSizeStr = typeof config.fontSize === 'number' ? `${config.fontSize}px` : config.fontSize;
+      
+      let numericFontSize;
+      if (typeof config.fontSize === 'number') {
+        numericFontSize = config.fontSize;
+      } else {
+        const temp = document.createElement('span');
+        temp.style.fontSize = config.fontSize;
+        document.body.appendChild(temp);
+        const computedSize = window.getComputedStyle(temp).fontSize;
+        numericFontSize = parseFloat(computedSize);
+        document.body.removeChild(temp);
+      }
+      
+      // Create offscreen canvas for text measurement
+      const offscreen = document.createElement('canvas');
+      const offCtx = offscreen.getContext('2d');
+      if (!offCtx) return;
+      
+      offCtx.font = `${config.fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.textBaseline = 'alphabetic';
+      const metrics = offCtx.measureText(text);
+      
+      const actualLeft = metrics.actualBoundingBoxLeft ?? 0;
+      const actualRight = metrics.actualBoundingBoxRight ?? metrics.width;
+      const actualAscent = metrics.actualBoundingBoxAscent ?? numericFontSize;
+      const actualDescent = metrics.actualBoundingBoxDescent ?? numericFontSize * 0.2;
+      
+      const textBoundingWidth = Math.ceil(actualLeft + actualRight);
+      const tightHeight = Math.ceil(actualAscent + actualDescent);
+      
+      const extraWidthBuffer = 10;
+      const offscreenWidth = textBoundingWidth + extraWidthBuffer;
+      
+      offscreen.width = offscreenWidth;
+      offscreen.height = tightHeight;
+      
+      const xOffset = extraWidthBuffer / 2;
+      offCtx.font = `${config.fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.textBaseline = 'alphabetic';
+      offCtx.fillStyle = config.color;
+      offCtx.fillText(text, xOffset - actualLeft, actualAscent);
+      
+      const horizontalMargin = 50;
+      const verticalMargin = 0;
+      canvas.width = offscreenWidth + horizontalMargin * 2;
+      canvas.height = tightHeight + verticalMargin * 2;
+      ctx.translate(horizontalMargin, verticalMargin);
+      
+      const interactiveLeft = horizontalMargin + xOffset;
+      const interactiveTop = verticalMargin;
+      const interactiveRight = interactiveLeft + textBoundingWidth;
+      const interactiveBottom = interactiveTop + tightHeight;
+      
+      const fuzzRange = 30;
+      
+      const run = () => {
+        if (isCancelled) return;
+        ctx.clearRect(
+          -fuzzRange,
+          -fuzzRange,
+          offscreenWidth + 2 * fuzzRange,
+          tightHeight + 2 * fuzzRange
+        );
+        
+        const intensity = isHovering ? config.hoverIntensity : config.baseIntensity;
+        
+        // Draw each horizontal line with random displacement
+        for (let j = 0; j < tightHeight; j++) {
+          const dx = Math.floor(intensity * (Math.random() - 0.5) * fuzzRange);
+          ctx.drawImage(
+            offscreen,
+            0,
+            j,
+            offscreenWidth,
+            1,
+            dx,
+            j,
+            offscreenWidth,
+            1
+          );
+        }
+        
+        animationFrameId = window.requestAnimationFrame(run);
+      };
+      
+      run();
+      
+      const isInsideTextArea = (x, y) => {
+        return (
+          x >= interactiveLeft &&
+          x <= interactiveRight &&
+          y >= interactiveTop &&
+          y <= interactiveBottom
+        );
+      };
+      
+      const handleMouseMove = (e) => {
+        if (!config.enableHover) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        isHovering = isInsideTextArea(x, y);
+      };
+      
+      const handleMouseLeave = () => {
+        isHovering = false;
+      };
+      
+      const handleTouchMove = (e) => {
+        if (!config.enableHover) return;
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        isHovering = isInsideTextArea(x, y);
+      };
+      
+      const handleTouchEnd = () => {
+        isHovering = false;
+      };
+      
+      if (config.enableHover) {
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseleave', handleMouseLeave);
+        canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+        canvas.addEventListener('touchend', handleTouchEnd);
+      }
+      
+      const cleanup = () => {
+        window.cancelAnimationFrame(animationFrameId);
+        if (config.enableHover) {
+          canvas.removeEventListener('mousemove', handleMouseMove);
+          canvas.removeEventListener('mouseleave', handleMouseLeave);
+          canvas.removeEventListener('touchmove', handleTouchMove);
+          canvas.removeEventListener('touchend', handleTouchEnd);
+        }
+      };
+      
+      canvas.cleanupFuzzyText = cleanup;
+    };
+    
+    init();
+    
+    return () => {
+      isCancelled = true;
+      window.cancelAnimationFrame(animationFrameId);
+      if (canvas && canvas.cleanupFuzzyText) {
+        canvas.cleanupFuzzyText();
+      }
+    };
+  }
+  
+  // Initialize FuzzyText for both instances
+  const initFuzzyText = () => {
+    console.log('Initializing FuzzyText...');
+    
+    // Create FuzzyText for both canvas instances
+    const canvases = document.querySelectorAll('[id^="fuzzy-text-canvas"]');
+    canvases.forEach((canvas, index) => {
+      if (canvas) {
+        // Fix duplicate IDs by making them unique
+        canvas.id = `fuzzy-text-canvas-${index + 1}`;
+        createFuzzyText(canvas.id, 'NODRAMA RECORDS', {
+          fontSize: '2.5rem',
+          fontWeight: 900,
+          fontFamily: 'Arial, sans-serif',
+          color: '#ffffff',
+          baseIntensity: 0.2,
+          hoverIntensity: 0.5,
+          enableHover: true
+        });
+      }
+    });
+    
+    // Create FuzzyText for location canvases
+    const locationCanvases = document.querySelectorAll('[id^="fuzzy-text-location"]');
+    locationCanvases.forEach((canvas, index) => {
+      if (canvas) {
+        // Fix duplicate IDs by making them unique
+        canvas.id = `fuzzy-text-location-${index + 1}`;
+        createFuzzyText(canvas.id, 'San Francisco, CA', {
+          fontSize: '1.2rem',
+          fontWeight: 600,
+          fontFamily: 'Arial, sans-serif',
+          color: '#ffffff',
+          baseIntensity: 0.15,
+          hoverIntensity: 0.4,
+          enableHover: true
+        });
+      }
+    });
+  };
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFuzzyText);
+  } else {
+    initFuzzyText();
   }
 })();
 </script>
