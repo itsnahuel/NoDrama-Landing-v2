@@ -2600,7 +2600,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="CEO"
                    data-handle="blackmass"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=BLACK+MASS"
+                   data-avatar="https://randomuser.me/api/portraits/men/32.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -2611,7 +2611,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="Founder"
                    data-handle="steelnerve"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=STEEL+NERVE"
+                   data-avatar="https://randomuser.me/api/portraits/women/44.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -2622,7 +2622,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="VP"
                    data-handle="brokenbeat"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=BROKEN+BEAT"
+                   data-avatar="https://randomuser.me/api/portraits/men/75.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -2633,7 +2633,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="Artist"
                    data-handle="acidrain"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=ACID+RAIN"
+                   data-avatar="https://randomuser.me/api/portraits/women/68.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -2644,7 +2644,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="Producer"
                    data-handle="emptyroom"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=EMPTY+ROOM"
+                   data-avatar="https://randomuser.me/api/portraits/men/85.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -2655,7 +2655,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
                    data-title="Director"
                    data-handle="staticvoid"
                    data-status="Online"
-                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=STATIC+VOID"
+                   data-avatar="https://randomuser.me/api/portraits/women/92.jpg"
                    data-contact="Contact">
               </div>
             </div>
@@ -3212,14 +3212,72 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
 </script>
 
 <style>
-  /* Custom adjustments for artists page */
+  /* Custom adjustments for artists page - match original artist cards layout */
   .profile-cards-grid {
-    gap: 3rem !important;
-    padding: 2rem;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
   }
   
   .profile-card-item {
-    margin: 1rem;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 650px !important;
+  }
+  
+  /* Make the cards bigger */
+  .pc-card {
+    height: 85vh !important;
+    max-height: 600px !important;
+    min-height: 500px !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    aspect-ratio: 0.7 !important;
+  }
+  
+  .profile-card-container {
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 100% !important;
+  }
+  
+  .pc-card-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  @media (max-width: 1200px) {
+    .profile-cards-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+      gap: 1.5rem !important;
+    }
+    
+    .pc-card {
+      max-height: 550px !important;
+      max-width: 350px !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-cards-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+      padding: 1rem !important;
+    }
+    
+    .profile-card-item {
+      min-height: 500px !important;
+    }
+    
+    .pc-card {
+      height: 70vh !important;
+      max-height: 500px !important;
+      max-width: 300px !important;
+    }
   }
   
   /* Tone down the colors for less vibrant appearance */
