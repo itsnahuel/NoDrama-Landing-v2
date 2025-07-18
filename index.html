@@ -199,7 +199,7 @@
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
-    background: #000000;
+    background: rgba(0, 0, 0, 0.1);
   }
 
   .dark-veil-layer {
@@ -212,13 +212,12 @@
       repeating-linear-gradient(
         0deg,
         transparent 0px,
-        rgba(100, 50, 255, 1.0) 0.5px,
-        transparent 1px
+        #0066ff 1px,
+        transparent 2px
       );
-    background-size: 100% 2px;
+    background-size: 100% 3px;
     animation: dark-veil-scanlines 26.67s linear infinite;
-    opacity: 0.8;
-    mix-blend-mode: screen;
+    opacity: 0.2;
   }
 
   .dark-veil-noise {
@@ -238,19 +237,19 @@
 
   .dark-veil-warp {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 120%;
-    top: -10%;
-    left: -10%;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
     background: 
-      radial-gradient(ellipse at 30% 70%, rgba(80, 40, 200, 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 30%, rgba(120, 60, 255, 0.2) 0%, transparent 50%);
-    animation: dark-veil-warp 13.33s ease-in-out infinite;
-    filter: blur(80px);
+      radial-gradient(ellipse 1200px 600px at 30% 70%, #4466ff 0%, #2244cc 30%, transparent 70%),
+      radial-gradient(ellipse 800px 400px at 70% 30%, #6644ff 0%, #4422dd 25%, transparent 60%),
+      radial-gradient(ellipse 600px 800px at 50% 80%, #5533ee 0%, #3311bb 20%, transparent 50%);
+    animation: dark-veil-warp 8s ease-in-out infinite;
+    filter: blur(20px);
     transform-origin: center;
     mix-blend-mode: screen;
+    opacity: 0.3;
   }
 
   @keyframes dark-veil-scanlines {
@@ -283,16 +282,16 @@
 
   @keyframes dark-veil-warp {
     0%, 100% {
-      transform: scale(1) rotate(0deg) skew(0deg, 0deg);
+      transform: scale(1) rotate(0deg) skew(0deg, 0deg) translateX(0px) translateY(0px);
     }
     25% {
-      transform: scale(1.02) rotate(1.25deg) skew(2.5deg, 1deg);
+      transform: scale(1.3) rotate(8deg) skew(10deg, 5deg) translateX(50px) translateY(-30px);
     }
     50% {
-      transform: scale(0.98) rotate(-0.75deg) skew(-1.5deg, 2deg);
+      transform: scale(0.7) rotate(-6deg) skew(-8deg, 12deg) translateX(-40px) translateY(60px);
     }
     75% {
-      transform: scale(1.01) rotate(0.5deg) skew(2deg, -1.25deg);
+      transform: scale(1.2) rotate(4deg) skew(8deg, -6deg) translateX(30px) translateY(-50px);
     }
   }
 
