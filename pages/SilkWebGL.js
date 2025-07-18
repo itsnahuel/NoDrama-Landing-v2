@@ -24,7 +24,9 @@ const vertexShaderSource = `
 `;
 
 const fragmentShaderSource = `
+  #ifdef GL_ES
   precision mediump float;
+  #endif
   
   varying vec2 vUv;
   varying vec3 vPosition;
@@ -35,10 +37,8 @@ const fragmentShaderSource = `
   uniform float uRotation;
   uniform float uNoiseIntensity;
   
-  const float e = 2.71828182845904523536;
-  
   float noise(vec2 texCoord) {
-    float G = e;
+    float G = 2.71828182845904523536;
     vec2 r = (G * sin(G * texCoord));
     return fract(r.x * r.y * (1.0 + texCoord.x));
   }
@@ -60,7 +60,7 @@ const fragmentShaderSource = `
     
     float pattern = 0.6 + 0.4 * sin(5.0 * (tex.x + tex.y + cos(3.0 * tex.x + 5.0 * tex.y) + 0.02 * tOffset) + sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
     
-    vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
+    vec4 col = vec4(uColor, 1.0) * vec4(vec3(pattern), 1.0) - rnd / 15.0 * uNoiseIntensity;
     col.a = 1.0;
     gl_FragColor = col;
   }
@@ -121,6 +121,8 @@ function createSilkCanvas(container, options = {}) {
     console.error('WebGL not supported');
     return null;
   }
+  
+  console.log('WebGL context created successfully');
   
   // Create shaders
   const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
