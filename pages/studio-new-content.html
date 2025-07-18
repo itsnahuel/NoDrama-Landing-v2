@@ -1,0 +1,332 @@
+      <main id="main" class="main">
+        <!-- Studio Hero Section -->
+        <section class="studio-hero">
+          <div class="studio-hero__content">
+            <h1 class="studio-hero__title">NoDrama Studios</h1>
+            <p class="studio-hero__subtitle">Where creativity meets technology</p>
+          </div>
+        </section>
+
+        <!-- Studio Gallery Section -->
+        <section class="studio-gallery">
+          <div class="studio-gallery__container">
+            
+            <!-- Gallery Item 1 - Photo Left, Text Right -->
+            <div class="studio-gallery__item studio-gallery__item--left">
+              <div class="studio-gallery__image">
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Recording Studio Setup" />
+              </div>
+              <div class="studio-gallery__text">
+                <h2>State-of-the-Art Recording</h2>
+                <p>Our main recording room features industry-leading equipment and acoustics designed for pristine sound capture. From vocal booths to live room sessions, we provide the perfect environment for your creative vision.</p>
+              </div>
+            </div>
+
+            <!-- Gallery Item 2 - Photo Right, Text Left -->
+            <div class="studio-gallery__item studio-gallery__item--right">
+              <div class="studio-gallery__text">
+                <h2>Professional Mixing Suite</h2>
+                <p>Our mixing and mastering suite is equipped with premium monitors, analog gear, and cutting-edge digital tools. Experience the difference that professional audio engineering makes to your tracks.</p>
+              </div>
+              <div class="studio-gallery__image">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Mixing Console" />
+              </div>
+            </div>
+
+            <!-- Gallery Item 3 - Photo Left, Text Right -->
+            <div class="studio-gallery__item studio-gallery__item--left">
+              <div class="studio-gallery__image">
+                <img src="https://images.unsplash.com/photo-1571974599782-87624638275c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Live Recording Session" />
+              </div>
+              <div class="studio-gallery__text">
+                <h2>Live Session Recording</h2>
+                <p>Capture the energy of live performances with our spacious live room. Perfect for bands, orchestras, or any group recording that needs that authentic, organic sound.</p>
+              </div>
+            </div>
+
+            <!-- Gallery Item 4 - Photo Right, Text Left -->
+            <div class="studio-gallery__item studio-gallery__item--right">
+              <div class="studio-gallery__text">
+                <h2>Creative Collaboration Space</h2>
+                <p>Our lounge area provides a comfortable space for artists to collaborate, write, and find inspiration. Complete with instruments, comfortable seating, and a relaxed atmosphere.</p>
+              </div>
+              <div class="studio-gallery__image">
+                <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Studio Lounge" />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <section class="studio-cta">
+          <div class="studio-cta__content">
+            <h2>Ready to Create Something Amazing?</h2>
+            <p>Visit our full-service recording facility and experience the difference professional production makes.</p>
+            <a href="https://boothsf.com" target="_blank" rel="noopener noreferrer" class="studio-cta__button">
+              Visit BoothSF.com
+              <svg class="studio-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15,3 21,3 21,9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- Studio Styles -->
+        <style>
+          .studio-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .studio-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+          }
+
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+          }
+
+          .studio-hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+
+          .studio-hero__title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          }
+
+          .studio-hero__subtitle {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+            font-weight: 300;
+          }
+
+          .studio-gallery {
+            padding: 6rem 2rem;
+            background: #0a0a0a;
+          }
+
+          .studio-gallery__container {
+            max-width: 1400px;
+            margin: 0 auto;
+          }
+
+          .studio-gallery__item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: center;
+          }
+
+          .studio-gallery__item--right {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .studio-gallery__item--right .studio-gallery__text {
+            order: 1;
+          }
+
+          .studio-gallery__item--right .studio-gallery__image {
+            order: 2;
+          }
+
+          .studio-gallery__image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.6s ease;
+          }
+
+          .studio-gallery__image:hover {
+            transform: scale(1.05);
+          }
+
+          .studio-gallery__image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+          }
+
+          .studio-gallery__text {
+            color: white;
+            padding: 2rem;
+          }
+
+          .studio-gallery__text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+          }
+
+          .studio-gallery__text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin: 0;
+          }
+
+          .studio-cta {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .studio-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+          }
+
+          .studio-cta__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+
+          .studio-cta h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+          }
+
+          .studio-cta p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+          }
+
+          .studio-cta__button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            color: #1a1a1a;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          }
+
+          .studio-cta__button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.4);
+            background: linear-gradient(45deg, #00bcd4, #64ffda);
+          }
+
+          .studio-cta__icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+          }
+
+          .studio-cta__button:hover .studio-cta__icon {
+            transform: translate(3px, -3px);
+          }
+
+          /* Responsive Design */
+          @media (max-width: 768px) {
+            .studio-hero {
+              padding: 6rem 1rem 3rem;
+            }
+
+            .studio-gallery {
+              padding: 4rem 1rem;
+            }
+
+            .studio-gallery__item {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+              margin-bottom: 4rem;
+            }
+
+            .studio-gallery__item--right {
+              grid-template-columns: 1fr;
+            }
+
+            .studio-gallery__item--right .studio-gallery__text {
+              order: 2;
+            }
+
+            .studio-gallery__item--right .studio-gallery__image {
+              order: 1;
+            }
+
+            .studio-gallery__image img {
+              height: 300px;
+            }
+
+            .studio-gallery__text {
+              padding: 1rem;
+            }
+
+            .studio-gallery__text h2 {
+              font-size: 2rem;
+            }
+
+            .studio-gallery__text p {
+              font-size: 1.1rem;
+            }
+
+            .studio-cta {
+              padding: 4rem 1rem;
+            }
+
+            .studio-cta h2 {
+              font-size: 2.5rem;
+            }
+
+            .studio-cta__button {
+              padding: 1.2rem 2rem;
+              font-size: 1.1rem;
+            }
+          }
+        </style>
+      </main>
