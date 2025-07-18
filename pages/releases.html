@@ -1168,71 +1168,110 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     margin-right: auto;
   }
   
-  /* Album-specific styles */
+  /* Tilted Album Card styles */
   .album-card {
     position: relative;
     aspect-ratio: 1;
-    border-radius: 8px;
-    overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
-    background: #1a1a1a;
+    background: transparent;
+    padding: 20px;
   }
   
-  .album-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  }
-  
-  .album-cover-container {
+  .tilted-card-figure {
     position: relative;
     width: 100%;
     height: 100%;
+    perspective: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
-  .album-cover {
+  .tilted-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .tilted-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 15px;
+    will-change: transform;
+    transform: translateZ(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   
-  .album-overlay {
+  .tilted-card-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+    border-radius: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    transform: translateZ(30px);
+  }
+  
+  .tilted-card-overlay-content {
     text-align: center;
+    color: white;
     padding: 1rem;
   }
   
-  .album-card:hover .album-overlay {
-    opacity: 1;
-  }
-  
   .album-title {
+    display: block;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
     margin-bottom: 0.5rem;
   }
   
   .album-artist {
+    display: block;
     font-size: 1rem;
-    color: #ccc;
     margin-bottom: 0.5rem;
+    opacity: 0.9;
   }
   
   .album-year {
+    display: block;
     font-size: 0.9rem;
-    color: #999;
+    opacity: 0.8;
+  }
+  
+  .tilted-card-caption {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 4px 10px;
+    font-size: 10px;
+    color: #2d2d2d;
+    opacity: 0;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .tilted-card-caption {
+      display: none;
+    }
+    
+    .album-card {
+      padding: 10px;
+    }
   }
 
   .artist-card {
@@ -2482,165 +2521,123 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
 
           <div class="releases-grid">
             <!-- Album 1 -->
-            <div class="album-card" onclick="location.href='#'">
-              <div class="album-cover-container">
-                <img 
-                  src="https://via.placeholder.com/400x400/1a1a1a/64ffda?text=DARK+FREQUENCY"
-                  alt="Dark Frequency"
-                  class="album-cover"
-                  loading="lazy"
-                />
-                <div class="album-overlay">
-                  <span class="album-title">DARK FREQUENCY</span>
-                  <span class="album-artist">NEXUS</span>
-                  <span class="album-year">2024</span>
-                </div>
-              </div>
+            <div class="album-card" 
+                 data-album-title="DARK FREQUENCY"
+                 data-album-artist="NEXUS"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/64ffda?text=DARK+FREQUENCY"
+                 data-alt-text="Dark Frequency"
+                 data-caption="DARK FREQUENCY - NEXUS">
+            </div>
+            
+            <!-- Album 2 -->
+            <div class="album-card" 
+                 data-album-title="DIGITAL UNDERGROUND"
+                 data-album-artist="PULSE"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/ff0080?text=DIGITAL+UNDERGROUND"
+                 data-alt-text="Digital Underground"
+                 data-caption="DIGITAL UNDERGROUND - PULSE">
+            </div>
+            
+            <!-- Album 3 -->
+            <div class="album-card" 
+                 data-album-title="NEON CIRCUITS"
+                 data-album-artist="ECHO"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/00ff80?text=NEON+CIRCUITS"
+                 data-alt-text="Neon Circuits"
+                 data-caption="NEON CIRCUITS - ECHO">
+            </div>
+            
+            <!-- Album 4 -->
+            <div class="album-card" 
+                 data-album-title="SYNTHETIC DREAMS"
+                 data-album-artist="VERTEX"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/0080ff?text=SYNTHETIC+DREAMS"
+                 data-alt-text="Synthetic Dreams"
+                 data-caption="SYNTHETIC DREAMS - VERTEX">
+            </div>
+            
+            <!-- Album 5 -->
+            <div class="album-card" 
+                 data-album-title="BASS PROTOCOL"
+                 data-album-artist="MATRIX"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/ff4080?text=BASS+PROTOCOL"
+                 data-alt-text="Bass Protocol"
+                 data-caption="BASS PROTOCOL - MATRIX">
+            </div>
+            
+            <!-- Album 6 -->
+            <div class="album-card" 
+                 data-album-title="VOID TRANSMISSION"
+                 data-album-artist="PHANTOM"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/40ff80?text=VOID+TRANSMISSION"
+                 data-alt-text="Void Transmission"
+                 data-caption="VOID TRANSMISSION - PHANTOM">
             </div>
 
-            <!-- Artist Card 2 -->
-            <div class="artist-card" onclick="location.href='#'">
-              <div class="artist-image-container">
-                <img 
-                  src="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=ARTIST+PHOTO" 
-                  alt="Founder" 
-                  class="artist-image"
-                >
-                <div class="artist-image-overlay"></div>
-                <div class="artist-genre-tag">HOUSE</div>
-              </div>
-              <div class="artist-content">
-                <h3 class="artist-name">Steel Nerve</h3>
-                <p class="artist-description">Founder</p>
-                <div class="artist-stats">
-                  <span class="artist-releases">12 Releases</span>
-                  <div class="artist-status">
-                    <div class="status-indicator"></div>
-                    <span>Active</span>
-                  </div>
-                </div>
-                <div class="artist-links">
-                  <a href="#" class="artist-link" title="Spotify">♪</a>
-                  <a href="#" class="artist-link" title="SoundCloud">♫</a>
-                  <a href="#" class="artist-link" title="Bandcamp">♬</a>
-                </div>
-              </div>
+            <!-- Album 7 -->
+            <div class="album-card" 
+                 data-album-title="STEEL NERVE"
+                 data-album-artist="FOUNDATION"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/c864ff?text=STEEL+NERVE"
+                 data-alt-text="Steel Nerve"
+                 data-caption="STEEL NERVE - FOUNDATION">
             </div>
 
-            <!-- Artist Card 3 -->
-            <div class="artist-card" onclick="location.href='#'">
-              <div class="artist-image-container">
-                <img 
-                  src="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
-                  alt="VP" 
-                  class="artist-image"
-                >
-                <div class="artist-image-overlay"></div>
-                <div class="artist-genre-tag">DRUM & BASS</div>
-              </div>
-              <div class="artist-content">
-                <h3 class="artist-name">Broken Beat</h3>
-                <p class="artist-description">VP</p>
-                <div class="artist-stats">
-                  <span class="artist-releases">6 Releases</span>
-                  <div class="artist-status">
-                    <div class="status-indicator"></div>
-                    <span>Active</span>
-                  </div>
-                </div>
-                <div class="artist-links">
-                  <a href="#" class="artist-link" title="Spotify">♪</a>
-                  <a href="#" class="artist-link" title="SoundCloud">♫</a>
-                  <a href="#" class="artist-link" title="Bandcamp">♬</a>
-                </div>
-              </div>
+            <!-- Album 8 -->
+            <div class="album-card" 
+                 data-album-title="BROKEN RHYTHM"
+                 data-album-artist="BASSLINE"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/ff64c8?text=BROKEN+RHYTHM"
+                 data-alt-text="Broken Rhythm"
+                 data-caption="BROKEN RHYTHM - BASSLINE">
             </div>
 
-            <!-- Artist Card 4 -->
-            <div class="artist-card" onclick="location.href='#'">
-              <div class="artist-image-container">
-                <img 
-                  src="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=ARTIST+PHOTO" 
-                  alt="Artist" 
-                  class="artist-image"
-                >
-                <div class="artist-image-overlay"></div>
-                <div class="artist-genre-tag">ACID</div>
-              </div>
-              <div class="artist-content">
-                <h3 class="artist-name">Acid Rain</h3>
-                <p class="artist-description">Artist</p>
-                <div class="artist-stats">
-                  <span class="artist-releases">15 Releases</span>
-                  <div class="artist-status">
-                    <div class="status-indicator"></div>
-                    <span>Active</span>
-                  </div>
-                </div>
-                <div class="artist-links">
-                  <a href="#" class="artist-link" title="Spotify">♪</a>
-                  <a href="#" class="artist-link" title="SoundCloud">♫</a>
-                  <a href="#" class="artist-link" title="Bandcamp">♬</a>
-                </div>
-              </div>
+            <!-- Album 9 -->
+            <div class="album-card" 
+                 data-album-title="ACID RAIN"
+                 data-album-artist="STORM"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/64ffda?text=ACID+RAIN"
+                 data-alt-text="Acid Rain"
+                 data-caption="ACID RAIN - STORM">
             </div>
 
-            <!-- Artist Card 5 -->
-            <div class="artist-card" onclick="location.href='#'">
-              <div class="artist-image-container">
-                <img 
-                  src="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=ARTIST+PHOTO" 
-                  alt="Producer" 
-                  class="artist-image"
-                >
-                <div class="artist-image-overlay"></div>
-                <div class="artist-genre-tag">AMBIENT</div>
-              </div>
-              <div class="artist-content">
-                <h3 class="artist-name">Empty Room</h3>
-                <p class="artist-description">Producer</p>
-                <div class="artist-stats">
-                  <span class="artist-releases">9 Releases</span>
-                  <div class="artist-status">
-                    <div class="status-indicator"></div>
-                    <span>Active</span>
-                  </div>
-                </div>
-                <div class="artist-links">
-                  <a href="#" class="artist-link" title="Spotify">♪</a>
-                  <a href="#" class="artist-link" title="SoundCloud">♫</a>
-                  <a href="#" class="artist-link" title="Bandcamp">♬</a>
-                </div>
-              </div>
+            <!-- Album 10 -->
+            <div class="album-card" 
+                 data-album-title="EMPTY SPACE"
+                 data-album-artist="VOID"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/c864ff?text=EMPTY+SPACE"
+                 data-alt-text="Empty Space"
+                 data-caption="EMPTY SPACE - VOID">
             </div>
 
-            <!-- Artist Card 6 -->
-            <div class="artist-card" onclick="location.href='#'">
-              <div class="artist-image-container">
-                <img 
-                  src="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
-                  alt="Director" 
-                  class="artist-image"
-                >
-                <div class="artist-image-overlay"></div>
-                <div class="artist-genre-tag">EXPERIMENTAL</div>
-              </div>
-              <div class="artist-content">
-                <h3 class="artist-name">Static Void</h3>
-                <p class="artist-description">Director</p>
-                <div class="artist-stats">
-                  <span class="artist-releases">4 Releases</span>
-                  <div class="artist-status">
-                    <div class="status-indicator"></div>
-                    <span>Active</span>
-                  </div>
-                </div>
-                <div class="artist-links">
-                  <a href="#" class="artist-link" title="Spotify">♪</a>
-                  <a href="#" class="artist-link" title="SoundCloud">♫</a>
-                  <a href="#" class="artist-link" title="Bandcamp">♬</a>
-                </div>
-              </div>
+            <!-- Album 11 -->
+            <div class="album-card" 
+                 data-album-title="STATIC NOISE"
+                 data-album-artist="DISTORTION"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/ff64c8?text=STATIC+NOISE"
+                 data-alt-text="Static Noise"
+                 data-caption="STATIC NOISE - DISTORTION">
+            </div>
+
+            <!-- Album 12 -->
+            <div class="album-card" 
+                 data-album-title="DIGITAL CHAOS"
+                 data-album-artist="GLITCH"
+                 data-album-year="2024"
+                 data-image-src="https://via.placeholder.com/400x400/1a1a1a/8064ff?text=DIGITAL+CHAOS"
+                 data-alt-text="Digital Chaos"
+                 data-caption="DIGITAL CHAOS - GLITCH">
             </div>
 
           </div>
@@ -3146,6 +3143,31 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
 </script> -->
 
 <!-- No background scripts for releases page -->
+
+<!-- TiltedCard JavaScript -->
+<script src="TiltedCard.js"></script>
+<script>
+  // Initialize tilted cards when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const albumCards = document.querySelectorAll('.album-card');
+    
+    albumCards.forEach(card => {
+      const options = {
+        albumTitle: card.dataset.albumTitle,
+        albumArtist: card.dataset.albumArtist,
+        albumYear: card.dataset.albumYear,
+        imageSrc: card.dataset.imageSrc,
+        altText: card.dataset.altText,
+        captionText: card.dataset.caption,
+        rotateAmplitude: 14,
+        scaleOnHover: 1.1,
+        showTooltip: true
+      };
+      
+      new TiltedCard(card, options);
+    });
+  });
+</script>
 
 </body>
   <link href="../cdn/shop/t/64/assets/theme-deferred7095.css?v=90605793427210744251749577087" rel="stylesheet" type="text/css" media="all" />
