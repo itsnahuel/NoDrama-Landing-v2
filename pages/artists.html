@@ -1041,10 +1041,9 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     margin: 0;
     padding: 6rem 2rem;
     background: 
-      radial-gradient(circle at 10% 20%, rgba(20, 20, 20, 0.8) 0%, transparent 20%),
-      radial-gradient(circle at 80% 80%, rgba(15, 15, 15, 0.6) 0%, transparent 30%),
-      radial-gradient(circle at 40% 40%, rgba(10, 10, 10, 0.4) 0%, transparent 40%),
-      linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 255, 150, 0.03) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000000 100%);
     min-height: 100vh;
     position: relative;
     overflow: hidden;
@@ -1087,94 +1086,82 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   }
 
   .artists-title {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 5rem;
+    font-weight: 900;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 12px;
     margin-bottom: 1rem;
-    font-family: 'Arial Black', Arial, sans-serif;
+    font-family: 'Courier New', monospace;
     text-shadow: 
-      2px 2px 0px #000000,
-      4px 4px 10px rgba(0, 0, 0, 0.8);
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 0 60px rgba(255, 255, 255, 0.1),
+      0 4px 8px rgba(0, 0, 0, 1);
     position: relative;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
   }
 
   .artists-title::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
   }
 
   .artists-subtitle {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
-    letter-spacing: 2px;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 4px;
     margin-bottom: 2rem;
     text-transform: uppercase;
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
   }
 
   .artists-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
     margin-top: 4rem;
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: 1400px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
 
   .artist-card {
     position: relative;
-    width: 280px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 0;
     overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
-    transform: translateY(0) translateZ(0);
+    transform: translateY(0);
     box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.9),
-      0 4px 15px rgba(0, 0, 0, 0.8),
-      inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(5px);
-    animation: float-card 6s ease-in-out infinite;
+      0 15px 35px rgba(0, 0, 0, 0.95),
+      0 5px 15px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
   }
 
   .artist-card:nth-child(2n) {
-    animation-delay: -2s;
+    transform: translateY(0) rotate(0.5deg);
   }
 
   .artist-card:nth-child(3n) {
-    animation-delay: -4s;
+    transform: translateY(0) rotate(-0.3deg);
   }
 
-  @keyframes float-card {
-    0%, 100% {
-      transform: translateY(0px) translateZ(0) rotate(0deg);
-    }
-    25% {
-      transform: translateY(-8px) translateZ(0) rotate(0.2deg);
-    }
-    50% {
-      transform: translateY(-4px) translateZ(0) rotate(-0.1deg);
-    }
-    75% {
-      transform: translateY(-12px) translateZ(0) rotate(0.1deg);
-    }
-  }
 
   .artist-card::before {
     content: '';
@@ -1184,10 +1171,13 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 100%);
+      linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.02) 0%, 
+        transparent 30%,
+        transparent 70%,
+        rgba(255, 255, 255, 0.01) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 1;
   }
@@ -1195,32 +1185,29 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   .artist-card::after {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
     background: linear-gradient(45deg, 
-      transparent 0%, 
-      rgba(255, 255, 255, 0.03) 25%, 
-      transparent 50%, 
-      rgba(255, 255, 255, 0.02) 75%, 
-      transparent 100%);
-    border-radius: 8px;
+      rgba(255, 255, 255, 0.08) 0%, 
+      transparent 25%, 
+      transparent 75%, 
+      rgba(255, 255, 255, 0.05) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: -1;
   }
 
   .artist-card:hover {
-    transform: translateY(-20px) translateZ(0) scale(1.05);
-    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.95),
-      0 10px 30px rgba(0, 0, 0, 0.9),
-      0 0 20px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    animation-play-state: paused;
+      0 20px 40px rgba(0, 0, 0, 0.98),
+      0 10px 20px rgba(0, 0, 0, 0.95),
+      0 0 30px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .artist-card:hover::before {
@@ -1234,7 +1221,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   .artist-image-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 80%;
     overflow: hidden;
     background: #000000;
   }
@@ -1243,13 +1230,13 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
-    filter: grayscale(0.9) contrast(1.4) brightness(0.7);
+    transition: transform 0.4s ease;
+    filter: grayscale(1) contrast(1.8) brightness(0.3);
   }
 
   .artist-card:hover .artist-image {
-    transform: scale(1.08);
-    filter: grayscale(0.6) contrast(1.5) brightness(0.9);
+    transform: scale(1.05);
+    filter: grayscale(0.8) contrast(2) brightness(0.5);
   }
 
   .artist-image-overlay {
@@ -1260,112 +1247,67 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     bottom: 0;
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.6) 60%,
-      rgba(0, 0, 0, 0.9) 100%
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.7) 100%
     );
     z-index: 2;
   }
 
   .artist-genre-tag {
-    position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    background: rgba(0, 0, 0, 0.95);
-    color: #ffffff;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2px;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 3;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    display: none;
   }
 
   .artist-content {
-    padding: 1.5rem;
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    z-index: 3;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .artist-name {
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-size: 2.2rem;
+    font-weight: 900;
     color: #ffffff;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: all 0.3s ease;
-    font-family: Arial, sans-serif;
-    text-shadow: 
-      0 0 0 #000000,
-      1px 1px 3px rgba(0, 0, 0, 0.9);
-    line-height: 1.2;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 1);
+    text-align: center;
   }
 
-  .artist-card:hover .artist-name {
-    color: #ffffff;
-    text-shadow: 
-      0 0 8px rgba(255, 255, 255, 0.3),
-      1px 1px 3px rgba(0, 0, 0, 0.9);
-    transform: translateY(-2px);
-  }
 
   .artist-description {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.8rem;
-    line-height: 1.4;
-    margin-bottom: 1.2rem;
-    font-weight: 400;
-    font-family: Arial, sans-serif;
-    height: 3.4rem;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.3;
+    margin-bottom: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    font-family: 'Courier New', monospace;
   }
 
   .artist-stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;
   }
 
   .artist-releases {
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    display: none;
   }
 
   .artist-status {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+    display: none;
   }
 
   .status-indicator {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #ffffff;
-    animation: pulse-void 3s ease-in-out infinite;
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    display: none;
   }
 
   @keyframes pulse-void {
@@ -1382,12 +1324,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   }
 
   .artist-links {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.8rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    display: none;
   }
 
   .artist-card:hover .artist-links {
@@ -1396,20 +1333,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   }
 
   .artist-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 1px;
-    background: rgba(0, 0, 0, 0.8);
-    color: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 11px;
-    font-weight: bold;
-    backdrop-filter: blur(5px);
+    display: none;
   }
 
   .artist-link:hover {
@@ -1427,45 +1351,43 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     }
 
     .artists-title {
-      font-size: 2.8rem;
+      font-size: 3.5rem;
+      letter-spacing: 8px;
     }
 
     .artists-grid {
-      gap: 3rem 2rem;
-    }
-
-    .artist-card {
-      width: 260px;
-    }
-
-    .artist-image-container {
-      height: 180px;
-    }
-
-    .artist-content {
-      padding: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .artist-name {
-      font-size: 1.2rem;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
     }
 
     .artist-description {
-      font-size: 0.75rem;
+      font-size: 0.9rem;
     }
   }
 
   @media (max-width: 480px) {
     .artists-grid {
-      gap: 2.5rem 1rem;
-    }
-
-    .artist-card {
-      width: 240px;
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
     .artists-title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
+      letter-spacing: 4px;
+    }
+
+    .artist-name {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .artist-description {
+      font-size: 0.8rem;
     }
   }
 
@@ -2452,8 +2374,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/64ffda?text=ARTIST+PHOTO" 
-                  alt="Dark Synthwave" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=ARTIST+PHOTO" 
+                  alt="CEO" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2461,9 +2383,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Black Mass</h3>
-                <p class="artist-description">
-                  Raw techno heavyweight crafting industrial soundscapes from the depths of underground warehouses and abandoned factories.
-                </p>
+                <p class="artist-description">CEO</p>
                 <div class="artist-stats">
                   <span class="artist-releases">8 Releases</span>
                   <div class="artist-status">
@@ -2483,8 +2403,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/c864ff?text=ARTIST+PHOTO" 
-                  alt="Neon Pulse" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=ARTIST+PHOTO" 
+                  alt="Founder" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2492,9 +2412,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Steel Nerve</h3>
-                <p class="artist-description">
-                  Deep house purist spinning vinyl-only sets in basement clubs, keeping the underground spirit alive with stripped-down grooves.
-                </p>
+                <p class="artist-description">Founder</p>
                 <div class="artist-stats">
                   <span class="artist-releases">12 Releases</span>
                   <div class="artist-status">
@@ -2514,8 +2432,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
-                  alt="Cyber Bass" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
+                  alt="VP" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2523,9 +2441,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Broken Beat</h3>
-                <p class="artist-description">
-                  Heavyweight drum & bass producer known for his devastating drops and relentless basslines that shake underground raves to their core.
-                </p>
+                <p class="artist-description">VP</p>
                 <div class="artist-stats">
                   <span class="artist-releases">6 Releases</span>
                   <div class="artist-status">
@@ -2545,8 +2461,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/64ffda?text=ARTIST+PHOTO" 
-                  alt="Acid Dreams" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=ARTIST+PHOTO" 
+                  alt="Artist" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2554,9 +2470,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Acid Rain</h3>
-                <p class="artist-description">
-                  Old-school acid house veteran with a TB-303 obsession, delivering pure underground warehouse energy with no compromise.
-                </p>
+                <p class="artist-description">Artist</p>
                 <div class="artist-stats">
                   <span class="artist-releases">15 Releases</span>
                   <div class="artist-status">
@@ -2576,8 +2490,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/c864ff?text=ARTIST+PHOTO" 
-                  alt="Binary Ghost" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=ARTIST+PHOTO" 
+                  alt="Producer" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2585,9 +2499,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Empty Room</h3>
-                <p class="artist-description">
-                  Minimal ambient producer creating haunting soundscapes from field recordings of abandoned spaces and forgotten places.
-                </p>
+                <p class="artist-description">Producer</p>
                 <div class="artist-stats">
                   <span class="artist-releases">9 Releases</span>
                   <div class="artist-status">
@@ -2607,8 +2519,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
                 <img 
-                  src="https://via.placeholder.com/400x280/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
-                  alt="Neural Storm" 
+                  src="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=ARTIST+PHOTO" 
+                  alt="Director" 
                   class="artist-image"
                 >
                 <div class="artist-image-overlay"></div>
@@ -2616,9 +2528,7 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
               <div class="artist-content">
                 <h3 class="artist-name">Static Void</h3>
-                <p class="artist-description">
-                  Underground experimental noise artist pushing boundaries with harsh feedback loops and distorted electronics from derelict studios.
-                </p>
+                <p class="artist-description">Director</p>
                 <div class="artist-stats">
                   <span class="artist-releases">4 Releases</span>
                   <div class="artist-status">
