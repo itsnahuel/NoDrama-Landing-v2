@@ -2414,7 +2414,8 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
             <p class="artists-subtitle">Raw Underground Electronic</p>
           </div>
 
-          <div class="artists-grid">
+          <!-- Original artist cards - hidden but preserved for future use -->
+          <div class="artists-grid" style="display: none;">
             <!-- Artist Card 1 -->
             <div class="artist-card" onclick="location.href='#'">
               <div class="artist-image-container">
@@ -2589,6 +2590,75 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
               </div>
             </div>
 
+          </div>
+
+          <!-- New ProfileCard Grid -->
+          <div class="artists-grid profile-cards-grid">
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Black Mass"
+                   data-title="CEO"
+                   data-handle="blackmass"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=BLACK+MASS"
+                   data-contact="Contact">
+              </div>
+            </div>
+            
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Steel Nerve"
+                   data-title="Founder"
+                   data-handle="steelnerve"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=STEEL+NERVE"
+                   data-contact="Contact">
+              </div>
+            </div>
+            
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Broken Beat"
+                   data-title="VP"
+                   data-handle="brokenbeat"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=BROKEN+BEAT"
+                   data-contact="Contact">
+              </div>
+            </div>
+            
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Acid Rain"
+                   data-title="Artist"
+                   data-handle="acidrain"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/64ffda?text=ACID+RAIN"
+                   data-contact="Contact">
+              </div>
+            </div>
+            
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Empty Room"
+                   data-title="Producer"
+                   data-handle="emptyroom"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/c864ff?text=EMPTY+ROOM"
+                   data-contact="Contact">
+              </div>
+            </div>
+            
+            <div class="profile-card-item">
+              <div class="profile-card-container" 
+                   data-name="Static Void"
+                   data-title="Director"
+                   data-handle="staticvoid"
+                   data-status="Online"
+                   data-avatar="https://via.placeholder.com/400x600/1a1a1a/ff64c8?text=STATIC+VOID"
+                   data-contact="Contact">
+              </div>
+            </div>
           </div>
         </div>
 
@@ -3111,6 +3181,88 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
     }
   });
 </script>
+
+<!-- ProfileCard CSS and JS -->
+<link rel="stylesheet" href="ProfileCard.css">
+<script src="ProfileCard.js"></script>
+<script>
+  // Initialize profile cards when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const profileContainers = document.querySelectorAll('.profile-card-container');
+    
+    profileContainers.forEach(container => {
+      const options = {
+        name: container.dataset.name,
+        title: container.dataset.title,
+        handle: container.dataset.handle,
+        status: container.dataset.status,
+        avatarUrl: container.dataset.avatar,
+        contactText: container.dataset.contact,
+        enableTilt: true,
+        showUserInfo: false,
+        onContactClick: () => {
+          console.log(`Contact clicked for ${container.dataset.name}`);
+          // Add your contact logic here
+        }
+      };
+      
+      new ProfileCard(container, options);
+    });
+  });
+</script>
+
+<style>
+  /* Custom adjustments for artists page */
+  .profile-cards-grid {
+    gap: 3rem !important;
+    padding: 2rem;
+  }
+  
+  .profile-card-item {
+    margin: 1rem;
+  }
+  
+  /* Tone down the colors for less vibrant appearance */
+  .pc-card {
+    background-image: 
+      radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), 
+        hsla(266, 40%, 60%, calc(var(--card-opacity) * 0.3)) 4%, 
+        hsla(266, 30%, 50%, calc(var(--card-opacity) * 0.2)) 10%, 
+        hsla(266, 20%, 40%, calc(var(--card-opacity) * 0.15)) 50%, 
+        hsla(266, 0%, 30%, 0) 100%),
+      radial-gradient(35% 52% at 55% 20%, #00ffaa20 0%, #073aff00 100%),
+      radial-gradient(100% 100% at 50% 50%, #00c1ff30 1%, #073aff00 76%),
+      conic-gradient(from 124deg at 50% 50%, #c137ff40 0%, #07c6ff30 40%, #07c6ff30 60%, #c137ff40 100%) !important;
+  }
+  
+  .pc-card-wrapper::before {
+    background-image: 
+      radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), 
+        hsla(266, 40%, 60%, calc(var(--card-opacity) * 0.2)) 4%, 
+        hsla(266, 30%, 50%, calc(var(--card-opacity) * 0.15)) 10%, 
+        hsla(266, 20%, 40%, calc(var(--card-opacity) * 0.1)) 50%, 
+        hsla(266, 0%, 30%, 0) 100%),
+      radial-gradient(35% 52% at 55% 20%, #00ffaa15 0%, #073aff00 100%),
+      radial-gradient(100% 100% at 50% 50%, #00c1ff20 1%, #073aff00 76%),
+      conic-gradient(from 124deg at 50% 50%, #c137ff25 0%, #07c6ff20 40%, #07c6ff20 60%, #c137ff25 100%) !important;
+  }
+  
+  /* Tone down the shine effects */
+  .pc-shine {
+    opacity: 0.6 !important;
+    filter: brightness(0.5) contrast(1.2) saturate(0.4) opacity(0.4) !important;
+  }
+  
+  .pc-glare {
+    opacity: 0.5 !important;
+    filter: brightness(0.6) contrast(1.1) !important;
+  }
+  
+  /* Reduce the inner gradient intensity */
+  .pc-inside {
+    background-image: linear-gradient(145deg, #60496e40 0%, #71C4FF20 100%) !important;
+  }
+</style>
 
 </body>
   <link href="../cdn/shop/t/64/assets/theme-deferred7095.css?v=90605793427210744251749577087" rel="stylesheet" type="text/css" media="all" />
