@@ -1438,6 +1438,10 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   }
 
 </style>
+
+<!-- Dither CSS -->
+<link rel="stylesheet" href="Dither.css">
+
 </head>
 
   <body class="template-page">
@@ -2396,6 +2400,9 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
       <main id="main" class="main">
         <!-- Underground Artist Grid Section -->
         <div class="artists-container">
+          <!-- Dither Background -->
+          <div id="dither-background" class="dither-background"></div>
+          
           <div class="artists-header">
             <h1 class="artists-title">Artists</h1>
             <p class="artists-subtitle">Raw Underground Electronic</p>
@@ -3052,7 +3059,33 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
 ></essential-upsell-app-embed>
 
 
-</div></body>
+</div>
+
+<!-- Dither WebGL Script -->
+<script src="DitherWebGL.js"></script>
+<script>
+  // Initialize dither background when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const ditherContainer = document.getElementById('dither-background');
+    
+    if (ditherContainer && typeof createDitherCanvas === 'function') {
+      createDitherCanvas(ditherContainer, {
+        waveColor: [0.5, 0.5, 0.5], // Red: 0.5, Green: 0.5, Blue: 0.5
+        colorNum: 9.6, // This is the dithering color levels
+        disableAnimation: false,
+        enableMouseInteraction: true,
+        mouseRadius: 0.2,
+        waveAmplitude: 0.23,
+        waveFrequency: 4.1,
+        waveSpeed: 0.01
+      });
+    } else {
+      console.log('Dither container or function not found');
+    }
+  });
+</script>
+
+</body>
   <link href="../cdn/shop/t/64/assets/theme-deferred7095.css?v=90605793427210744251749577087" rel="stylesheet" type="text/css" media="all" />
 
 <!-- Mirrored from www.blackbookrecs.com/pages/about-us by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Jul 2025 03:17:25 GMT -->
