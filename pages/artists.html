@@ -1439,8 +1439,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
 
 </style>
 
-<!-- Dither CSS -->
-<link rel="stylesheet" href="Dither.css">
+<!-- Dither CSS - COMMENTED OUT FOR TESTING -->
+<!-- <link rel="stylesheet" href="Dither.css"> -->
+
+<!-- Silk CSS -->
+<link rel="stylesheet" href="Silk.css">
 
 </head>
 
@@ -2400,8 +2403,11 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
       <main id="main" class="main">
         <!-- Underground Artist Grid Section -->
         <div class="artists-container">
-          <!-- Dither Background -->
-          <div id="dither-background" class="dither-background"></div>
+          <!-- Dither Background - COMMENTED OUT FOR TESTING -->
+          <!-- <div id="dither-background" class="dither-background"></div> -->
+          
+          <!-- Silk Background -->
+          <div id="silk-background" class="silk-background"></div>
           
           <div class="artists-header">
             <h1 class="artists-title">Artists</h1>
@@ -3061,8 +3067,8 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
 
 </div>
 
-<!-- Dither WebGL Script -->
-<script src="DitherWebGL.js"></script>
+<!-- Dither WebGL Script - COMMENTED OUT FOR TESTING -->
+<!-- <script src="DitherWebGL.js"></script>
 <script>
   // Initialize dither background when page loads
   document.addEventListener('DOMContentLoaded', function() {
@@ -3081,6 +3087,27 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
       });
     } else {
       console.log('Dither container or function not found');
+    }
+  });
+</script> -->
+
+<!-- Silk WebGL Script -->
+<script src="SilkWebGL.js"></script>
+<script>
+  // Initialize silk background when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    const silkContainer = document.getElementById('silk-background');
+    
+    if (silkContainer && typeof createSilkCanvas === 'function') {
+      createSilkCanvas(silkContainer, {
+        speed: 0.25,
+        scale: 2.5,
+        color: "#7B7481",
+        noiseIntensity: 10,
+        rotation: 0
+      });
+    } else {
+      console.log('Silk container or function not found');
     }
   });
 </script>
