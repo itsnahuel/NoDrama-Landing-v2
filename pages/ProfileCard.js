@@ -8,10 +8,11 @@ const DEFAULT_INNER_GRADIENT =
   "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)";
 
 const ANIMATION_CONFIG = {
-  SMOOTH_DURATION: 600,
-  INITIAL_DURATION: 1500,
+  SMOOTH_DURATION: 300,
+  INITIAL_DURATION: 800,
   INITIAL_X_OFFSET: 70,
   INITIAL_Y_OFFSET: 60,
+  THROTTLE_DELAY: 16, // ~60fps
 };
 
 class ProfileCard {
@@ -36,6 +37,8 @@ class ProfileCard {
     };
     
     this.rafId = null;
+    this.lastUpdate = 0;
+    this.isAnimating = false;
     this.init();
   }
   
@@ -133,6 +136,13 @@ class ProfileCard {
   }
   
   updateCardTransform(offsetX, offsetY) {
+    // Throttle updates for performance
+    const now = performance.now();
+    if (now - this.lastUpdate < ANIMATION_CONFIG.THROTTLE_DELAY) {
+      return;
+    }
+    this.lastUpdate = now;
+    
     const width = this.cardRef.clientWidth;
     const height = this.cardRef.clientHeight;
     
@@ -142,21 +152,31 @@ class ProfileCard {
     const centerX = percentX - 50;
     const centerY = percentY - 50;
     
+    // Reduce sensitivity by scaling down the rotation values
+    const rotationScale = 0.3; // Reduced from 1.0 to 0.3
+    
     const properties = {
       '--pointer-x': `${percentX}%`,
       '--pointer-y': `${percentY}%`,
-      '--background-x': `${this.adjust(percentX, 0, 100, 35, 65)}%`,
-      '--background-y': `${this.adjust(percentY, 0, 100, 35, 65)}%`,
+      '--background-x': `${this.adjust(percentX, 0, 100, 42, 58)}%`, // Reduced range
+      '--background-y': `${this.adjust(percentY, 0, 100, 42, 58)}%`, // Reduced range
       '--pointer-from-center': `${this.clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
       '--pointer-from-top': `${percentY / 100}`,
       '--pointer-from-left': `${percentX / 100}`,
-      '--rotate-x': `${this.round(-(centerX / 5))}deg`,
-      '--rotate-y': `${this.round(centerY / 4)}deg`,
+      '--rotate-x': `${this.round(-(centerX / 5) * rotationScale)}deg`,
+      '--rotate-y': `${this.round((centerY / 4) * rotationScale)}deg`,
     };
     
-    Object.entries(properties).forEach(([property, value]) => {
-      this.wrapRef.style.setProperty(property, value);
-    });
+    // Use requestAnimationFrame for smooth updates
+    if (!this.isAnimating) {
+      this.isAnimating = true;
+      requestAnimationFrame(() => {
+        Object.entries(properties).forEach(([property, value]) => {
+          this.wrapRef.style.setProperty(property, value);
+        });
+        this.isAnimating = false;
+      });
+    }
   }
   
   createSmoothAnimation(duration, startX, startY) {

@@ -3247,10 +3247,12 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
       conic-gradient(from 124deg at 50% 50%, #c137ff25 0%, #07c6ff20 40%, #07c6ff20 60%, #c137ff25 100%) !important;
   }
   
-  /* Tone down the shine effects */
+  /* Tone down the shine effects and optimize performance */
   .pc-shine {
     opacity: 0.6 !important;
     filter: brightness(0.5) contrast(1.2) saturate(0.4) opacity(0.4) !important;
+    /* Disable expensive animations on shine for better performance */
+    animation: none !important;
   }
   
   .pc-glare {
@@ -3261,6 +3263,32 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
   /* Reduce the inner gradient intensity */
   .pc-inside {
     background-image: linear-gradient(145deg, #60496e40 0%, #71C4FF20 100%) !important;
+  }
+  
+  /* Optimize animations for better performance */
+  .pc-card {
+    will-change: transform !important;
+    transform: translate3d(0, 0, 0) !important; /* Force hardware acceleration */
+  }
+  
+  .pc-card:hover,
+  .pc-card.active {
+    transition: transform 0.2s ease !important; /* Faster transitions */
+  }
+  
+  .pc-card-wrapper {
+    transform: translate3d(0, 0, 0) !important; /* Force hardware acceleration */
+  }
+  
+  /* Disable the most expensive background animation */
+  .pc-card {
+    animation: none !important;
+  }
+  
+  /* Simplify the shine background for better performance */
+  .pc-shine::before,
+  .pc-shine::after {
+    display: none !important; /* Hide the most expensive shine layers */
   }
 </style>
 
