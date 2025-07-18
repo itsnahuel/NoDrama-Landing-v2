@@ -3280,29 +3280,14 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
     }
   }
   
-  /* Tone down the colors for less vibrant appearance */
+  /* Make backgrounds transparent */
   .pc-card {
-    background-image: 
-      radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), 
-        hsla(266, 40%, 60%, calc(var(--card-opacity) * 0.3)) 4%, 
-        hsla(266, 30%, 50%, calc(var(--card-opacity) * 0.2)) 10%, 
-        hsla(266, 20%, 40%, calc(var(--card-opacity) * 0.15)) 50%, 
-        hsla(266, 0%, 30%, 0) 100%),
-      radial-gradient(35% 52% at 55% 20%, #00ffaa20 0%, #073aff00 100%),
-      radial-gradient(100% 100% at 50% 50%, #00c1ff30 1%, #073aff00 76%),
-      conic-gradient(from 124deg at 50% 50%, #c137ff40 0%, #07c6ff30 40%, #07c6ff30 60%, #c137ff40 100%) !important;
+    background: transparent !important;
+    background-image: none !important;
   }
   
   .pc-card-wrapper::before {
-    background-image: 
-      radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), 
-        hsla(266, 40%, 60%, calc(var(--card-opacity) * 0.2)) 4%, 
-        hsla(266, 30%, 50%, calc(var(--card-opacity) * 0.15)) 10%, 
-        hsla(266, 20%, 40%, calc(var(--card-opacity) * 0.1)) 50%, 
-        hsla(266, 0%, 30%, 0) 100%),
-      radial-gradient(35% 52% at 55% 20%, #00ffaa15 0%, #073aff00 100%),
-      radial-gradient(100% 100% at 50% 50%, #00c1ff20 1%, #073aff00 76%),
-      conic-gradient(from 124deg at 50% 50%, #c137ff25 0%, #07c6ff20 40%, #07c6ff20 60%, #c137ff25 100%) !important;
+    display: none !important;
   }
   
   /* Tone down the shine effects and optimize performance */
@@ -3318,9 +3303,10 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
     filter: brightness(0.6) contrast(1.1) !important;
   }
   
-  /* Reduce the inner gradient intensity */
+  /* Make inner background transparent */
   .pc-inside {
-    background-image: linear-gradient(145deg, #60496e40 0%, #71C4FF20 100%) !important;
+    background: transparent !important;
+    background-image: none !important;
   }
   
   /* Optimize animations for better performance */
@@ -3343,10 +3329,60 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
     animation: none !important;
   }
   
-  /* Simplify the shine background for better performance */
-  .pc-shine::before,
-  .pc-shine::after {
-    display: none !important; /* Hide the most expensive shine layers */
+  /* Enable reactive effects on the avatar image */
+  .pc-avatar-content .avatar {
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    filter: 
+      brightness(calc(0.8 + var(--pointer-from-center) * 0.4))
+      contrast(calc(1.0 + var(--pointer-from-center) * 0.3))
+      saturate(calc(1.0 + var(--pointer-from-center) * 0.5))
+      hue-rotate(calc(var(--pointer-from-left) * 30deg - 15deg)) !important;
+    transition: filter 0.2s ease !important;
+  }
+  
+  /* Add color overlay that reacts to mouse */
+  .pc-avatar-content::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: 
+      radial-gradient(circle at var(--pointer-x) var(--pointer-y), 
+        hsla(calc(var(--pointer-from-left) * 360), 70%, 60%, calc(var(--card-opacity) * 0.3)) 0%,
+        hsla(calc(var(--pointer-from-left) * 360 + 60), 60%, 70%, calc(var(--card-opacity) * 0.2)) 30%,
+        transparent 70%) !important;
+    mix-blend-mode: overlay !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+  }
+  
+  /* Add shimmer effect that follows mouse */
+  .pc-avatar-content::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: 
+      linear-gradient(135deg, 
+        transparent 0%, 
+        transparent calc(var(--pointer-from-left) * 40%), 
+        rgba(255, 255, 255, calc(var(--card-opacity) * 0.4)) calc(var(--pointer-from-left) * 50%), 
+        rgba(255, 255, 255, calc(var(--card-opacity) * 0.2)) calc(var(--pointer-from-left) * 60%), 
+        transparent calc(var(--pointer-from-left) * 80%), 
+        transparent 100%) !important;
+    mix-blend-mode: overlay !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+  }
+  
+  /* Make avatar more reactive to mouse movement */
+  .pc-avatar-content {
+    overflow: hidden !important;
+    border-radius: 30px !important;
+  }
+  
+  .pc-card:hover .pc-avatar-content .avatar,
+  .pc-card.active .pc-avatar-content .avatar {
+    transform: translateX(-50%) scale(calc(1.0 + var(--pointer-from-center) * 0.1)) !important;
   }
 </style>
 
