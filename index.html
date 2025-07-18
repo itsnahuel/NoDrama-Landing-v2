@@ -226,10 +226,14 @@
   }
   
   /* Navigation positioning and styling */
+  .header__row.lower {
+    display: flex !important;
+    align-items: flex-end !important;
+  }
+  
   .fs-navigation-base {
     font-size: 20px !important;
-    transform: translateY(40px);
-    z-index: 9999;
+    z-index: 99999 !important;
     position: relative;
   }
 
@@ -3419,7 +3423,7 @@ _ReStockConfig.wishlist = undefined;_ReStockConfig.wishlist = {"is_service_activ
       const parent = canvas.parentElement;
       if (!parent) return;
       
-      const resolutionScale = 1;
+      const resolutionScale = 2;
       const w = parent.clientWidth * resolutionScale;
       const h = parent.clientHeight * resolutionScale;
       
