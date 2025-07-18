@@ -83,6 +83,9 @@
       vec2 uv = v_texCoord - 0.5;
       uv.x *= u_resolution.x / u_resolution.y;
       
+      // Scale up the coordinates to make patterns smaller
+      uv *= 3.0;
+      
       float f = pattern(uv);
       
       // Mouse interaction
@@ -99,6 +102,13 @@
       // Apply color intensity (lower = whiter)
       float whiteness = (10.0 - u_colorNum) / 10.0;
       col = mix(col, vec3(1.0), whiteness);
+      
+      // Apply larger pixel dithering for more organic look
+      vec2 ditherCoord = floor(gl_FragCoord.xy / 4.0);
+      float dither = mod(ditherCoord.x + ditherCoord.y, 2.0);
+      float step = 1.0 / (u_colorNum - 1.0);
+      col += dither * step * 0.3;
+      col = floor(col * (u_colorNum - 1.0) + 0.5) / (u_colorNum - 1.0);
       
       gl_FragColor = vec4(col, 1.0);
     }
