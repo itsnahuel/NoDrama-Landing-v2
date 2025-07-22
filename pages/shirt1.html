@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Merch - NoDrama Records</title>
+    <title>BNKR1 - NoDrama Records</title>
     <style>
         @font-face {
             font-family: 'HelveticaNowBold';
@@ -26,7 +26,6 @@
         body {
             background: linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
             background-attachment: fixed;
-            text-align: center;
         }
 
         /* Header Navigation */
@@ -116,30 +115,7 @@
             display: none;
         }
 
-        /* Page Title */
-        .page-title {
-            margin: 120px auto 60px auto;
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(45deg, #ff0040, #00ff64, #ff0040);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glitch 6s infinite;
-            text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
-        }
-
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-        }
-
-        /* Cart Modal */
+        /* Cart Modal - Same as merch page */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -372,117 +348,209 @@
             box-shadow: 0 0 20px rgba(0, 255, 100, 0.4);
         }
 
-        /* Products Grid - From 2019/index.html but with underground styling */
-        .products {
+        /* Product Detail Page Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            margin: 40px auto 100px auto;
-            max-width: 900px;
-            padding: 0 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
         }
 
-        .products a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(255, 0, 64, 0.05), rgba(0, 255, 100, 0.05));
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .products a:hover {
-            border-color: rgba(255, 0, 64, 0.5);
-            box-shadow: 0 0 30px rgba(255, 0, 64, 0.2), 
-                        0 0 60px rgba(0, 255, 100, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .products a img {
+        .main-image {
             width: 100%;
-            max-width: 400px;
-            margin: auto;
-            display: block;
+            border-radius: 12px;
             transition: transform 0.3s ease;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 0, 64, 0.3);
+            border: 2px solid rgba(255, 0, 64, 0.3);
         }
 
-        .products a img:hover {
+        .main-image:hover {
             transform: scale(1.02);
         }
 
-        .product-info {
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
             margin-top: 20px;
-            text-align: center;
         }
 
-        .product-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0 5px 0;
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover {
+            border-color: rgba(255, 0, 64, 0.8);
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding-left: 40px;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ff0040;
-            text-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ff0040, #00ff64);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
         }
 
         .product-price {
-            font-size: 18px;
+            font-size: 1.8rem;
             color: #00ff64;
-            margin: 0;
+            margin-bottom: 30px;
             text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
         }
 
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #111, #000);
-            border-top: 2px solid rgba(255, 0, 64, 0.5);
-            padding: 40px 0;
-            text-align: center;
+        .product-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: #ddd;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .size-selector {
+            margin-bottom: 30px;
         }
 
-        .footer-links {
+        .size-label {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff0040;
+        }
+
+        .size-options {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
+        .size-option {
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 0, 64, 0.5);
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+
+        .size-option:hover,
+        .size-option.selected {
+            background: rgba(255, 0, 64, 0.2);
+            border-color: rgba(255, 0, 64, 0.9);
+            box-shadow: 0 0 15px rgba(255, 0, 64, 0.4);
+        }
+
+        .buy-btn {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, rgba(255, 0, 64, 0.8), rgba(0, 255, 100, 0.8));
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
             letter-spacing: 1px;
-            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
         }
 
-        .footer-links a:hover {
-            color: #ff0040;
-            text-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.5), 0 0 60px rgba(0, 255, 100, 0.3);
         }
 
-        .footer-copyright {
-            color: #666;
-            font-size: 12px;
+        .product-details {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 0, 64, 0.2);
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            min-width: 120px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #ff0040;
+        }
+
+        .detail-value {
+            color: #ccc;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 255, 100, 0.9);
+            color: #000;
+            padding: 20px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3000;
+            box-shadow: 0 0 30px rgba(0, 255, 100, 0.5);
+        }
+
+        .success-message.show {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
-            .page-title {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .product-info {
+                padding-left: 0;
+            }
+            
+            .product-title {
                 font-size: 2rem;
-                margin: 100px auto 40px auto;
+            }
+            
+            .container {
+                padding: 100px 20px 40px;
             }
 
             .header-content {
@@ -493,32 +561,13 @@
                 padding: 10px 15px;
                 font-size: 12px;
             }
-
-            .products {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                margin: 40px auto 80px auto;
-            }
-
-            .cart-content {
-                width: 95%;
-                max-height: 90vh;
-            }
-
-            .cart-actions {
-                flex-direction: column;
-            }
-
-            .footer-links {
-                gap: 15px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header-content">
-            <a href="../index.html" class="back-btn">← Back to Home</a>
+            <a href="merch.html" class="back-btn">← Back to Shop</a>
             
             <button class="cart-btn" onclick="toggleCart()">
                 🛒 Cart
@@ -555,64 +604,59 @@
         </div>
     </div>
 
-    <h1 class="page-title">Underground Merch</h1>
-
-    <div class="products">
-        <a href="shirt1.html">
-            <img src="../assets/bnkr1.png" alt="BNKR1 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR1</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
-        <a href="shirt2.html">
-            <img src="../assets/bnkr2.png" alt="BNKR2 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR2</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
-        <a href="shirt3.html">
-            <img src="../assets/bnkr3.png" alt="BNKR3 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR3</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
-        <a href="shirt4.html">
-            <img src="../assets/bnkr4.png" alt="BNKR4 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR4</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
-        <a href="shirt5.html">
-            <img src="../assets/bnkr5.png" alt="BNKR5 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR5</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
-        <a href="shirt6.html">
-            <img src="../assets/bnkr6.png" alt="BNKR6 - Underground Series">
-            <div class="product-info">
-                <div class="product-name">BNKR6</div>
-                <div class="product-price">$30.00</div>
-            </div>
-        </a>
+    <div class="success-message" id="successMessage">
+        Added to Cart!
     </div>
-
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
-                <a href="artists.html">Artists</a>
-                <a href="releases.html">Releases</a>
-                <a href="studio.html">Studio</a>
-                <a href="merch.html">Merch</a>
+    
+    <div class="container">
+        <div class="product-grid">
+            <div class="product-images">
+                <img src="../assets/bnkr1.png" alt="BNKR1 Design - Main" class="main-image" id="mainImage">
+                <div class="thumbnail-grid">
+                    <img src="../assets/bnkr1.png" alt="BNKR1 - Front" class="thumbnail" onclick="changeImage(this)">
+                    <img src="../assets/bnkr1.png" alt="BNKR1 - Back" class="thumbnail" onclick="changeImage(this)">
+                    <img src="../assets/bnkr1.png" alt="BNKR1 - Detail" class="thumbnail" onclick="changeImage(this)">
+                    <img src="../assets/bnkr1.png" alt="BNKR1 - Lifestyle" class="thumbnail" onclick="changeImage(this)">
+                </div>
             </div>
-            <div class="footer-copyright">
-                © 2025 NoDrama Records. All rights reserved.
+            
+            <div class="product-info">
+                <h1 class="product-title">BNKR1</h1>
+                <div class="product-price">$30.00</div>
+                
+                <div class="product-description">
+                    Underground frequency meets streetwear. The BNKR1 design channels raw electronic energy through minimalist aesthetics. This piece represents the intersection of digital culture and physical expression—a statement for those who operate outside conventional channels.
+                </div>
+                
+                <div class="size-selector">
+                    <label class="size-label">Size</label>
+                    <div class="size-options">
+                        <div class="size-option" onclick="selectSize(this)">S</div>
+                        <div class="size-option selected" onclick="selectSize(this)">M</div>
+                        <div class="size-option" onclick="selectSize(this)">L</div>
+                    </div>
+                </div>
+                
+                <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Material:</div>
+                        <div class="detail-value">100% Premium Cotton</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Print:</div>
+                        <div class="detail-value">Water-based ink, fade resistant</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Fit:</div>
+                        <div class="detail-value">Oversized streetwear cut</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Edition:</div>
+                        <div class="detail-value">Limited underground series</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -620,6 +664,7 @@
     <script>
         // Cart functionality - persisted using localStorage
         let cart = [];
+        let selectedSize = 'M'; // Default size
 
         function loadCart() {
             try {
@@ -635,26 +680,32 @@
         }
 
         // Product data
-        const products = {
-            'BNKR1': { name: 'BNKR1', price: 30, image: '../assets/bnkr1.png' },
-            'BNKR2': { name: 'BNKR2', price: 30, image: '../assets/bnkr2.png' },
-            'BNKR3': { name: 'BNKR3', price: 30, image: '../assets/bnkr3.png' },
-            'BNKR4': { name: 'BNKR4', price: 30, image: '../assets/bnkr4.png' },
-            'BNKR5': { name: 'BNKR5', price: 30, image: '../assets/bnkr5.png' },
-            'BNKR6': { name: 'BNKR6', price: 30, image: '../assets/bnkr6.png' }
-        };
+        const product = { name: 'BNKR1', price: 30, image: '../assets/bnkr1.png' };
 
-        // Initialize cart on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             cart = loadCart();
             updateCartUI();
         });
 
+        function changeImage(thumbnail) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = thumbnail.src;
+            mainImage.alt = thumbnail.alt;
+        }
+
+        function selectSize(sizeElement) {
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            sizeElement.classList.add('selected');
+            selectedSize = sizeElement.textContent;
+        }
+
         function toggleCart() {
             const modal = document.getElementById('cartModal');
             modal.classList.toggle('active');
-            
-            // Close modal when clicking outside
+
             if (modal.classList.contains('active')) {
                 modal.onclick = function(e) {
                     if (e.target === modal) {
@@ -670,7 +721,6 @@
             const cartFooter = document.getElementById('cartFooter');
             const cartTotal = document.getElementById('cartTotal');
 
-            // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             if (totalItems > 0) {
                 cartCount.textContent = totalItems;
@@ -679,13 +729,11 @@
                 cartCount.classList.add('hidden');
             }
 
-            // Update cart items display
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div class="cart-empty"><h3>Your cart is empty</h3><p>Add some underground gear to get started</p></div>';
                 cartFooter.style.display = 'none';
             } else {
                 cartFooter.style.display = 'block';
-                
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
                         <img src="${item.image}" alt="${item.name}" class="cart-item-image">
@@ -703,17 +751,13 @@
                     </div>
                 `).join('');
 
-                // Update total
                 const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 cartTotal.textContent = `$${total.toFixed(2)}`;
             }
         }
 
-        function addToCart(productId, size) {
-            const product = products[productId];
-            if (!product) return;
-
-            const itemId = `${productId}-${size}`;
+        function addToCart() {
+            const itemId = `${product.name}-${selectedSize}`;
             const existingItem = cart.find(item => item.id === itemId);
 
             if (existingItem) {
@@ -723,7 +767,7 @@
                     id: itemId,
                     name: product.name,
                     price: product.price,
-                    size: size,
+                    size: selectedSize,
                     quantity: 1,
                     image: product.image
                 });
@@ -731,6 +775,15 @@
 
             updateCartUI();
             saveCart();
+            showSuccessMessage();
+        }
+
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 2000);
         }
 
         function updateQuantity(itemId, change) {
@@ -764,10 +817,8 @@
                 return;
             }
 
-            // Calculate total
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Order summary with underground theme
+
             let orderSummary = 'UNDERGROUND ORDER SUMMARY:\n\n';
             cart.forEach(item => {
                 orderSummary += `${item.name} (${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
@@ -775,28 +826,12 @@
             orderSummary += `\nTotal: $${total.toFixed(2)}`;
             orderSummary += '\n\nTransmission sent to underground network!';
             orderSummary += '\nYour gear will be delivered through secure channels.';
-            
+
             alert(orderSummary);
-            
-            // Clear cart after successful checkout
+
             clearCart();
             toggleCart();
         }
-
-        // Make functions available globally for individual product pages
-        window.addToCart = addToCart;
-        window.updateCartUI = updateCartUI;
-
-        // Glitch effect for title
-        setInterval(() => {
-            const title = document.querySelector('.page-title');
-            if (Math.random() > 0.95) {
-                title.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-                setTimeout(() => {
-                    title.style.transform = 'translate(0, 0)';
-                }, 50);
-            }
-        }, 100);
     </script>
 </body>
 </html>
