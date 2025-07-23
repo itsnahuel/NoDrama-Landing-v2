@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Size Guide - NoDrama Records</title>
+    <style>
+        @font-face {
+            font-family: 'HelveticaNowBold';
+            src: url('../fonts/helvetica-now-bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'HelveticaNowBold', sans-serif;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: calc(30px + env(safe-area-inset-top));
+            left: 30px;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.85);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .info-section {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .size-table th,
+        .size-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .size-table th {
+            background: rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .fit-guide {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .fit-guide h3 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .fit-guide ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .fit-guide li {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 100px 20px 40px;
+            }
+
+            .back-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .size-table {
+                font-size: 0.8rem;
+            }
+
+            .size-table th,
+            .size-table td {
+                padding: 8px 5px;
+            }
+
+            .fit-guide {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="merch.html" class="back-btn">← Back to Shop</a>
+
+    <div class="container">
+        <h1>Size Guide</h1>
+
+        <div class="info-section">
+            <h2>T-Shirt Sizing</h2>
+            <p>All measurements are in inches. Our shirts feature an oversized streetwear fit.</p>
+            
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest Width</th>
+                        <th>Body Length</th>
+                        <th>Sleeve Length</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>S</strong></td>
+                        <td>20"</td>
+                        <td>27"</td>
+                        <td>8"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong></td>
+                        <td>22"</td>
+                        <td>28"</td>
+                        <td>8.5"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>L</strong></td>
+                        <td>24"</td>
+                        <td>29"</td>
+                        <td>9"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XL</strong></td>
+                        <td>26"</td>
+                        <td>30"</td>
+                        <td>9.5"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fit-guide">
+            <h3>How to Measure</h3>
+            <ul>
+                <li><strong>Chest Width:</strong> Measure across the chest from armpit to armpit</li>
+                <li><strong>Body Length:</strong> Measure from the top of the shoulder to the bottom hem</li>
+                <li><strong>Sleeve Length:</strong> Measure from the shoulder seam to the end of the sleeve</li>
+            </ul>
+        </div>
+
+        <div class="fit-guide">
+            <h3>Fit Notes</h3>
+            <ul>
+                <li>Our shirts are designed with an oversized, relaxed fit</li>
+                <li>If you prefer a more fitted look, consider sizing down</li>
+                <li>All shirts are 100% premium cotton and may shrink slightly after washing</li>
+                <li>For the best fit, follow care instructions and wash in cold water</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <p style="text-align: center; margin-top: 40px;">
+                <strong>Still unsure about sizing?</strong><br>
+                Contact us at <a href="mailto:support@nodramarecords.com" style="color: #fff;">support@nodramarecords.com</a> for personalized fit advice.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Returns - NoDrama Records</title>
+    <style>
+        @font-face {
+            font-family: 'HelveticaNowBold';
+            src: url('../fonts/helvetica-now-bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'HelveticaNowBold', sans-serif;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: calc(30px + env(safe-area-inset-top));
+            left: 30px;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.85);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .info-section {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            padding-left: 20px;
+        }
+
+        .info-section li {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 100px 20px 40px;
+            }
+
+            .back-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="merch.html" class="back-btn">← Back to Shop</a>
+
+    <div class="container">
+        <h1>Returns</h1>
+
+        <div class="info-section">
+            <h2>Return Policy</h2>
+            <p>We want you to love your NoDrama Records merchandise. If you're not completely satisfied, we accept returns within <span class="highlight">30 days</span> of delivery.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Return Requirements</h2>
+            <ul>
+                <li>Items must be in original condition with all tags attached</li>
+                <li>Items must be unwashed and unworn</li>
+                <li>Items must be returned in original packaging when possible</li>
+                <li>Return shipping costs are the responsibility of the customer</li>
+                <li>Refunds will be processed within 5-7 business days after we receive your return</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>How to Return</h2>
+            <p><span class="highlight">Step 1:</span> Contact our customer service team at <a href="mailto:support@nodramarecords.com" style="color: #fff;">support@nodramarecords.com</a> with your order number and reason for return.</p>
+            <p><span class="highlight">Step 2:</span> We'll provide you with a return authorization number and return address.</p>
+            <p><span class="highlight">Step 3:</span> Package your items securely and include the return authorization number.</p>
+            <p><span class="highlight">Step 4:</span> Ship the package back to us using a trackable shipping method.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Exchanges</h2>
+            <p>We currently do not offer direct exchanges. If you need a different size or item, please return your original order and place a new order for the desired item.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Non-Returnable Items</h2>
+            <ul>
+                <li>Items damaged by normal wear and tear</li>
+                <li>Items returned after 30 days</li>
+                <li>Items that have been washed or altered</li>
+                <li>Sale or clearance items (marked as final sale)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

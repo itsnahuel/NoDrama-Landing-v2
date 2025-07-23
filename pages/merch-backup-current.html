@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Merch - NoDrama Records</title>
-    
-    <!-- Custom CSS for Shopify-style header -->
-    
     <style>
         @font-face {
             font-family: 'HelveticaNowBold';
@@ -26,234 +23,111 @@
             text-align: center;
         }
 
-        /* Exact Header Styles from other subpages */
+        /* Header Navigation */
         .header {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
-            background: #000;
+            padding: 20px 0;
         }
-        
-        .header__inner {
+
+        .header-content {
             max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 0 20px;
+            flex-wrap: wrap;
         }
-        
-        .header__row {
-            display: flex;
-            align-items: center;
-            min-height: 60px;
-        }
-        
-        .header__row.upper {
-            justify-content: flex-end;
-            padding: 10px 0;
-        }
-        
-        .header__row.logo-only {
-            justify-content: center;
-            padding: 20px 0;
-            position: relative;
-        }
-        
-        .header__row.lower.three-segment {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .header__row-segment.left {
-            justify-self: start;
-        }
-        
-        .header__row-segment.right {
-            justify-self: end;
-        }
-        
-        .header__links-primary-scroll-container {
-            justify-self: center;
+
+        /* Navigation Styles */
+        .main-nav {
+            flex: 1;
             display: flex;
             justify-content: center;
+            margin: 0 20px;
         }
-        
-        .header__links-list {
+
+        .nav-links {
             display: flex;
             list-style: none;
-            margin: 0;
             padding: 0;
+            margin: 0;
             gap: 30px;
+            align-items: center;
         }
-        
-        .header__links-list a {
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
             color: #fff;
             text-decoration: none;
+            padding: 10px 15px;
+            border: 2px solid transparent;
+            background: transparent;
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 1px;
-            padding: 10px 15px;
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
             border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.85);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            font-size: 17px;
-        }
-        
-        .header__links-list a:hover {
-            border-color: rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .social-icons {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 15px;
-        }
-        
-        .social-icons svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-            transition: fill 0.3s ease;
-        }
-        
-        .social-icons a:hover svg {
-            fill: #ccc;
-        }
-        
-        .header__logo .image__img {
-            display: none !important;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        /* Fuzzy Text Effect */
-        .fuzzy-text {
-            position: relative;
-            display: inline-block;
-            animation: fuzzy-pulse 3s ease-in-out infinite;
-            filter: blur(0px);
-            transition: all 0.3s ease;
-        }
-
-        .fuzzy-text::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: transparent;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.08),
-                0 0 20px rgba(255, 255, 255, 0.06),
-                0 0 30px rgba(255, 255, 255, 0.04),
-                0 0 40px rgba(255, 255, 255, 0.02);
-            animation: fuzzy-glow 2s ease-in-out infinite alternate;
-            z-index: -1;
-        }
-
-        .fuzzy-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            color: transparent;
-            text-shadow: 
-                0 0 5px rgba(100, 255, 218, 0.07),
-                0 0 15px rgba(200, 100, 255, 0.05),
-                0 0 25px rgba(255, 100, 200, 0.03);
-            animation: fuzzy-shimmer 4s ease-in-out infinite;
-            z-index: -2;
-        }
-
-        @keyframes fuzzy-pulse {
-            0%, 100% {
-                filter: blur(0px);
-                text-shadow: 
-                    0 0 5px rgba(255, 255, 255, 0.08),
-                    0 0 10px rgba(255, 255, 255, 0.06),
-                    0 0 15px rgba(255, 255, 255, 0.04);
-            }
-            50% {
-                filter: blur(0.5px);
-                text-shadow: 
-                    0 0 8px rgba(255, 255, 255, 0.12),
-                    0 0 16px rgba(255, 255, 255, 0.08),
-                    0 0 24px rgba(255, 255, 255, 0.06);
-            }
-        }
-
-        @keyframes fuzzy-glow {
-            0% {
-                text-shadow: 
-                    0 0 10px rgba(255, 255, 255, 0.6),
-                    0 0 20px rgba(255, 255, 255, 0.4),
-                    0 0 30px rgba(255, 255, 255, 0.2);
-            }
-            100% {
-                text-shadow: 
-                    0 0 15px rgba(255, 255, 255, 0.10),
-                    0 0 25px rgba(255, 255, 255, 0.08),
-                    0 0 35px rgba(255, 255, 255, 0.06);
-            }
-        }
-
-        @keyframes fuzzy-shimmer {
-            0% {
-                text-shadow: 
-                    0 0 5px rgba(100, 255, 218, 0.05),
-                    0 0 15px rgba(200, 100, 255, 0.03),
-                    0 0 25px rgba(255, 100, 200, 0.02);
-            }
-            33% {
-                text-shadow: 
-                    0 0 8px rgba(255, 100, 200, 0.08),
-                    0 0 18px rgba(100, 255, 218, 0.06),
-                    0 0 28px rgba(200, 100, 255, 0.04);
-            }
-            66% {
-                text-shadow: 
-                    0 0 6px rgba(200, 100, 255, 0.09),
-                    0 0 16px rgba(255, 100, 200, 0.07),
-                    0 0 26px rgba(100, 255, 218, 0.05);
-            }
-            100% {
-                text-shadow: 
-                    0 0 5px rgba(100, 255, 218, 0.05),
-                    0 0 15px rgba(200, 100, 255, 0.03),
-                    0 0 25px rgba(255, 100, 200, 0.02);
-            }
-        }
-
-        .fuzzy-text:hover {
-            filter: blur(0px);
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.20),
-                0 0 20px rgba(255, 255, 255, 0.16),
-                0 0 30px rgba(255, 255, 255, 0.12);
-        }
-
-        .header__skip-to-content {
-            position: absolute;
-            left: -9999px;
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: translateY(-2px);
         }
 
         .cart-btn {
-            position: relative;
             color: #fff;
-            background: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            padding: 15px 25px;
             border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            padding: 10px 20px;
-            cursor: pointer;
+            background: rgba(0, 0, 0, 0.85);
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
         }
 
         .cart-btn:hover {
@@ -285,7 +159,7 @@
 
         /* Page Title */
         .page-title {
-            margin: 40px auto 60px auto;
+            margin: 120px auto 60px auto;
             font-size: 3rem;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -651,69 +525,28 @@
     </style>
 </head>
 <body>
-    <header
-      data-section-id="sections--24489168666928__header"
-      data-section-type="header"
-      data-enable-sticky-header="true"
-      class="header header--layout-logo-center-nav-below header--has-logo header--has-transparent-logo header--has-accounts header--navigation-is-all-caps header--has-social-links header--has-country-or-locale"
-      data-is-sticky="true"
-      data-navigation-position="below"
-      data-logo-position="center"
-      style="--logo-width: 130px; --mobile-logo-width: 100px; --color-cart-count-transparent: #000000; --color-text-transparent: #ffffff; --divider-width: 0px;">
-      
-      <a href="#main" class="header__skip-to-content btn btn--primary btn--small">Skip to content</a>
-      
-      <div class="header__inner">
-        <div class="header__row header__row-desktop upper">
-          <div class="header__row-segment header__row-segment-desktop left"></div>
-          <div class="header__row-segment header__row-segment-desktop header__row-segment-desktop--logo-left right">
-            <ul class="social-icons social-icons--left" data-count="5">
-              <li><a href="https://www.facebook.com/groups/chrislake" title="NoDrama Records on Facebook" target="_blank" rel="noopener"><span class="icon icon-new icon-facebook"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,2C6.477,2,2,6.477,2,12c0,5.013,3.693,9.153,8.505,9.876V14.65H8.031v-2.629h2.474v-1.749 c0-2.896,1.411-4.167,3.818-4.167c1.153,0,1.762,0.085,2.051,0.124v2.294h-1.642c-1.022,0-1.379,0.969-1.379,2.061v1.437h2.995 l-0.406,2.629h-2.588v7.247C18.235,21.236,22,17.062,22,12C22,6.477,17.523,2,12,2z" fill="currentColor" /></svg></span></a></li>
-              <li><a href="https://twitter.com/chrislake?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" title="NoDrama Records on Twitter" target="_blank" rel="noopener"><span class="icon icon-new icon-twitter"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9617 5.80742C21.2242 6.13158 20.4367 6.35242 19.6075 6.45325C20.4525 5.94408 21.1025 5.14158 21.41 4.18408C20.6175 4.64658 19.7392 4.98325 18.8042 5.17075C18.0575 4.37158 16.9933 3.87158 15.8117 3.87158C13.5475 3.87158 11.7117 5.70742 11.7117 7.96908C11.7117 8.29408 11.7492 8.60658 11.8175 8.90575C8.40917 8.74492 5.38833 7.10825 3.36667 4.63408C3.01083 5.23575 2.81167 5.93492 2.81167 6.69658C2.81167 8.12158 3.53667 9.37408 4.635 10.1099C3.9625 10.0882 3.33 9.90325 2.77833 9.59658V9.64742C2.77833 11.6349 4.18917 13.2924 6.06667 13.6699C5.7225 13.7624 5.35917 13.8124 4.98667 13.8124C4.725 13.8124 4.47417 13.7874 4.22333 13.7407C4.74917 15.3682 6.26083 16.5549 8.06 16.5882C6.66 17.6874 4.88583 18.3424 2.975 18.3424C2.65 18.3424 2.32583 18.3232 2 18.2866C3.82417 19.4482 5.97333 20.1274 8.2975 20.1274C15.8425 20.1274 19.9633 13.8807 19.9633 8.47242C19.9633 8.29825 19.9633 8.12242 19.9508 7.94742C20.7517 7.37325 21.4508 6.64742 22.0008 5.82408L21.9617 5.80742Z" fill="currentColor" /></svg></span></a></li>
-              <li><a href="https://www.instagram.com/chrislake/" title="NoDrama Records on Instagram" target="_blank" rel="noopener"><span class="icon icon-new icon-instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" fill="currentColor" /></svg></span></a></li>
-              <li><a href="https://www.tiktok.com/@chrislake?lang=en" title="NoDrama Records on Tiktok" target="_blank" rel="noopener"><span class="icon icon-new icon-tiktok"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.16 1.35c.35 3 2 4.83 5 5v3.4a7.79 7.79 0 0 1-4.92-1.44v6.36c0 8.07-8.8 10.59-12.34 4.81C1.59 15.77 3 9.24 10.28 9v3.59a11.24 11.24 0 0 0-1.69.41c-1.62.55-2.54 1.58-2.29 3.4.49 3.47 6.87 4.5 6.34-2.29V1.36h3.52z" fill="currentColor"/></svg></span></a></li>
-              <li><a href="https://www.youtube.com/@chrislakeofficial" title="NoDrama Records on YouTube" target="_blank" rel="noopener"><span class="icon icon-new icon-youtube"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" fill="currentColor" /></svg></span></a></li>
-            </ul>
-            <nav class="header__cross-border fs-body-50" data-secondary-navigation></nav>
-          </div>
-        </div>
-        
-        <div class="header__row header__row-desktop logo-only">
-          <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
-            <a class="header__logo-link" style="display: block !important; text-align: center !important; width: auto !important;" href="../index.html" aria-label="NoDrama Records">
-              <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
-            </a>
-          </h1>
-        </div>
-        
-        <div class="header__row header__row-desktop lower three-segment">
-          <div class="header__row-segment header__row-segment-desktop left"></div>
-          <div class="header__links-primary-scroll-container" data-scroll-container data-at-start="true" data-at-end="true" data-axis="horizontal">
-            <div data-scroll-container-viewport>
-              <div class="scroll-sentinal scroll-sentinal--start" data-position="start"></div>
-              <nav class="header__links header__links-primary" data-navigation>
-                <ul class="header__links-list fs-navigation-base">
-                  <li><a href="events.html" class="" data-link><span class="link-hover">EVENTS</span></a></li>
-                  <li><a href="artists.html" class="" data-link><span class="link-hover">ARTISTS</span></a></li>
-                  <li><a href="releases.html" class="" data-link><span class="link-hover">RELEASES</span></a></li>
-                  <li><a href="merch.html" class="" data-link><span class="link-hover">MERCH</span></a></li>
-                  <li><a href="studio.html" class="" data-link><span class="link-hover">STUDIO</span></a></li>
-                  <li><a href="podcasts-streams.html" class="" data-link><span class="link-hover">PODCASTS/STREAMS</span></a></li>
-                  <li><a href="contact.html" class="" data-link><span class="link-hover">CONTACT</span></a></li>
+    <div class="header">
+        <div class="header-content">
+            <a href="../index.html" class="back-btn">← Back to Home</a>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="events.html">EVENTS</a></li>
+                    <li><a href="artists.html">ARTISTS</a></li>
+                    <li><a href="releases.html">RELEASES</a></li>
+                    <li><a href="merch.html" class="active">MERCH</a></li>
+                    <li><a href="studio.html">STUDIO</a></li>
+                    <li><a href="podcasts-streams.html">PODCASTS/STREAMS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
                 </ul>
-              </nav>
-              <div class="scroll-sentinal scroll-sentinal--end" data-position="end"></div>
-            </div>
-          </div>
-          <div class="header__row-segment header__row-segment-desktop right">
+            </nav>
+            
             <button class="cart-btn" onclick="toggleCart()">
-              🛒 Cart
-              <div class="cart-count hidden" id="cartCount">0</div>
+                🛒 Cart
+                <div class="cart-count hidden" id="cartCount">0</div>
             </button>
-          </div>
         </div>
-      </div>
-    </header>
+    </div>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">

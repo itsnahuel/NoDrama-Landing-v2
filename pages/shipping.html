@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Shipping - NoDrama Records</title>
+    <style>
+        @font-face {
+            font-family: 'HelveticaNowBold';
+            src: url('../fonts/helvetica-now-bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'HelveticaNowBold', sans-serif;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: calc(30px + env(safe-area-inset-top));
+            left: 30px;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.85);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .info-section {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .shipping-table th,
+        .shipping-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .shipping-table th {
+            background: rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 100px 20px 40px;
+            }
+
+            .back-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .shipping-table {
+                font-size: 0.9rem;
+            }
+
+            .shipping-table th,
+            .shipping-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="merch.html" class="back-btn">← Back to Shop</a>
+
+    <div class="container">
+        <h1>Shipping</h1>
+
+        <div class="info-section">
+            <h2>Shipping Information</h2>
+            <p>We ship worldwide from our fulfillment center. All orders are processed within 1-2 business days.</p>
+            <p>You will receive a tracking number via email once your order has been shipped.</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Shipping Rates</h2>
+            <table class="shipping-table">
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Shipping Time</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>United States</td>
+                        <td>3-5 business days</td>
+                        <td>$5.99</td>
+                    </tr>
+                    <tr>
+                        <td>Canada</td>
+                        <td>5-7 business days</td>
+                        <td>$9.99</td>
+                    </tr>
+                    <tr>
+                        <td>Europe</td>
+                        <td>7-10 business days</td>
+                        <td>$12.99</td>
+                    </tr>
+                    <tr>
+                        <td>Rest of World</td>
+                        <td>10-14 business days</td>
+                        <td>$15.99</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-section">
+            <h2>Important Notes</h2>
+            <p>• Free shipping on orders over $75 (US only)</p>
+            <p>• International customers may be subject to customs fees and duties</p>
+            <p>• We are not responsible for customs delays or fees</p>
+            <p>• PO Box addresses are not accepted for international orders</p>
+        </div>
+    </div>
+</body>
+</html>
