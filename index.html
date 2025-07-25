@@ -237,6 +237,51 @@
     position: relative;
   }
 
+  /* Fix navigation overlay issue - make page transition overlay transparent */
+  #page-transition-overlay {
+    display: none !important;
+  }
+
+  /* Fix header positioning to not cover navigation */
+  .header__inner {
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure navigation row is visible */
+  .header__row.lower {
+    position: relative !important;
+    z-index: 100 !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  /* Remove any clipping from header */
+  .header {
+    overflow: visible !important;
+  }
+
+  /* Ensure header sections don't clip content */
+  .shopify-section-group-header-group {
+    overflow: visible !important;
+  }
+
+  /* Make sure the header outer wrapper allows overflow */
+  .header__outer-wrapper {
+    overflow: visible !important;
+  }
+
+  /* Remove the header overlay that's blocking navigation */
+  .header-overlay {
+    display: none !important;
+  }
+
+  /* Also remove any header space that might be blocking */
+  .header__space {
+    display: none !important;
+  }
+
 
   
 
