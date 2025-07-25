@@ -1,0 +1,111 @@
+<!-- Performance optimization patch for releases.html -->
+<!-- Add this to the <head> section of releases.html -->
+
+<!-- 1. Critical CSS for faster first paint -->
+<style id="critical-css">
+/* Critical CSS - inline for immediate render */
+body { margin: 0; padding: 0; background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+.header { position: sticky; top: 0; z-index: 1000; background: #000; }
+img { max-width: 100%; height: auto; }
+.loading { opacity: 0; transition: opacity 0.3s ease; }
+.loaded { opacity: 1; }
+
+/* Disable heavy animations during page load */
+@media (prefers-reduced-motion: no-preference) {
+  .no-js-ready * { animation: none !important; transition: none !important; }
+}
+body.js-ready .no-js-ready { display: none; }
+</style>
+
+<!-- 2. Preconnect to external domains -->
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preconnect" href="https://www.blackbookrecs.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.shopify.com">
+
+<!-- 3. JavaScript to optimize images and lazy loading -->
+<script>
+// Optimize images on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Mark body as JS ready
+    document.body.classList.add('js-ready');
+    
+    // Optimize all image srcsets
+    const images = document.querySelectorAll('img[srcset]');
+    images.forEach(img => {
+        // Replace excessive srcset with optimized version
+        const srcsetMatch = img.srcset.match(/([^?]+\?v=[^&]+)/);
+        if (srcsetMatch) {
+            const baseUrl = srcsetMatch[1];
+            img.srcset = `${baseUrl}&width=400 400w, ${baseUrl}&width=800 800w, ${baseUrl}&width=1200 1200w`;
+            img.sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px';
+        }
+        
+        // Add lazy loading if not present
+        if (!img.hasAttribute('loading')) {
+            img.loading = 'lazy';
+        }
+        
+        // Add loading class for fade-in effect
+        img.classList.add('loading');
+        img.addEventListener('load', function() {
+            this.classList.remove('loading');
+            this.classList.add('loaded');
+        });
+    });
+    
+    // Defer non-critical animations
+    setTimeout(() => {
+        document.querySelectorAll('[class*="animation"]').forEach(el => {
+            el.style.animationPlayState = 'running';
+        });
+    }, 1000);
+});
+
+// Intersection Observer for advanced lazy loading
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+    });
+    
+    // Observe all images
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img').forEach(img => {
+            imageObserver.observe(img);
+        });
+    });
+}
+
+// Remove or defer heavy scripts
+window.addEventListener('load', function() {
+    // Remove Locksmith script if not needed
+    const locksmithScripts = document.querySelectorAll('script[data-locksmith]');
+    locksmithScripts.forEach(script => {
+        if (!window.Locksmith || !window.Locksmith.state.locked) {
+            script.remove();
+        }
+    });
+});
+</script>
+
+<!-- 4. Defer font loading -->
+<script>
+// Load fonts asynchronously
+const fontLink = document.createElement('link');
+fontLink.rel = 'preload';
+fontLink.as = 'style';
+fontLink.href = '../assets/fonts.css';
+fontLink.onload = function() { this.rel = 'stylesheet'; };
+document.head.appendChild(fontLink);
+</script>

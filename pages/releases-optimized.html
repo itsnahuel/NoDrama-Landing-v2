@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Releases - NoDrama Records</title>
+    
+    <!-- Critical CSS inline for faster render -->
+    <style>
+        body { margin: 0; padding: 0; background: #000; color: #fff; font-family: Arial, sans-serif; }
+        .header { position: sticky; top: 0; z-index: 1000; background: #000; }
+        .releases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .release-item { background: #111; border: 1px solid #333; padding: 15px; transition: transform 0.3s; }
+        .release-item:hover { transform: translateY(-5px); border-color: #666; }
+        .release-image { width: 100%; height: auto; display: block; }
+        .loading { opacity: 0; transition: opacity 0.3s; }
+        .loaded { opacity: 1; }
+    </style>
+    
+    <!-- Preconnect to CDN for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://www.blackbookrecs.com">
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="preload" href="../assets/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../assets/theme.css"></noscript>
+</head>
+<body>
+    <!-- Simplified header structure -->
+    <header class="header">
+        <nav>
+            <ul style="display: flex; list-style: none; gap: 20px; justify-content: center; padding: 20px;">
+                <li><a href="../index.html" style="color: #fff; text-decoration: none;">HOME</a></li>
+                <li><a href="events.html" style="color: #fff; text-decoration: none;">EVENTS</a></li>
+                <li><a href="artists.html" style="color: #fff; text-decoration: none;">ARTISTS</a></li>
+                <li><a href="releases.html" style="color: #fff; text-decoration: none;">RELEASES</a></li>
+                <li><a href="merch.html" style="color: #fff; text-decoration: none;">MERCH</a></li>
+                <li><a href="studio.html" style="color: #fff; text-decoration: none;">STUDIO</a></li>
+                <li><a href="contact.html" style="color: #fff; text-decoration: none;">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="text-align: center; margin: 40px 0; font-size: 3rem;">RELEASES</h1>
+        
+        <div class="releases-grid">
+            <!-- Release items with optimized images and lazy loading -->
+            <div class="release-item">
+                <img class="release-image loading" 
+                     src="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400" 
+                     srcset="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400 400w,
+                             ../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=600 600w,
+                             ../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=800 800w" 
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                     alt="Release 1" 
+                     loading="lazy"
+                     onload="this.classList.add('loaded'); this.classList.remove('loading');">
+                <h3>Release Title 1</h3>
+                <p>Artist Name</p>
+            </div>
+            
+            <div class="release-item">
+                <img class="release-image loading" 
+                     src="../cdn/shop/files/placeholder.png?v=1&width=400" 
+                     srcset="../cdn/shop/files/placeholder.png?v=1&width=400 400w,
+                             ../cdn/shop/files/placeholder.png?v=1&width=600 600w,
+                             ../cdn/shop/files/placeholder.png?v=1&width=800 800w" 
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                     alt="Release 2" 
+                     loading="lazy"
+                     onload="this.classList.add('loaded'); this.classList.remove('loading');">
+                <h3>Release Title 2</h3>
+                <p>Artist Name</p>
+            </div>
+            
+            <!-- Add more release items as needed -->
+        </div>
+    </main>
+
+    <!-- Defer non-critical JavaScript -->
+    <script>
+        // Lazy load images with Intersection Observer for better performance
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+
+    <!-- Load non-critical scripts asynchronously -->
+    <script async src="../assets/theme.js"></script>
+</body>
+</html>

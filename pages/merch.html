@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Merch - NoDrama Records</title>
     
-    <!-- Custom CSS for Shopify-style header -->
+    <!-- Custom CSS for page-specific styles only -->
     
     <style>
         @font-face {
@@ -25,104 +25,8 @@
             line-height: 1.6;
             text-align: center;
         }
-
-        /* Exact Header Styles from other subpages */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #000;
-        }
         
-        .header__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .header__row {
-            display: flex;
-            align-items: center;
-            min-height: 60px;
-        }
-        
-        .header__row.upper {
-            justify-content: flex-end;
-            padding: 10px 0;
-        }
-        
-        .header__row.logo-only {
-            justify-content: center;
-            padding: 20px 0;
-            position: relative;
-        }
-        
-        .header__row.lower.three-segment {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .header__row-segment.left {
-            justify-self: start;
-        }
-        
-        .header__row-segment.right {
-            justify-self: end;
-        }
-        
-        .header__links-primary-scroll-container {
-            justify-self: center;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .header__links-list {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 30px;
-        }
-        
-        .header__links-list a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-            padding: 10px 15px;
-            border: 2px solid transparent;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-size: 17px;
-        }
-        
-        .header__links-list a:hover {
-            border-color: rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .social-icons {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 15px;
-        }
-        
-        .social-icons svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-            transition: fill 0.3s ease;
-        }
-        
-        .social-icons a:hover svg {
-            fill: #ccc;
-        }
-        
+        /* Remove all custom header styles - let theme handle it */
         .header__logo .image__img {
             display: none !important;
         }
@@ -520,8 +424,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 60px;
-            margin: 100px auto;
             max-width: 900px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
@@ -649,17 +553,472 @@
             }
         }
     </style>
+    
+    <!-- Shopify Theme CSS -->
+    <link href="../cdn/shop/t/64/assets/theme125f.css?v=43640527189650912531749577087" rel="stylesheet" type="text/css" media="all" />
+    <link href="../cdn/shop/t/64/assets/custombd13.css?v=163912552749196074211749577087" rel="stylesheet" type="text/css" media="all" />
+    
+    <!-- Fuzzy text animation styles -->
+    <style>
+        @keyframes fuzzy-pulse {
+            0%, 100% { filter: blur(0.5px) brightness(1); }
+            50% { filter: blur(1px) brightness(1.1); }
+        }
+        
+        .fuzzy-text {
+            animation: fuzzy-pulse 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Header overlay fix */
+        .header-overlay {
+            display: none !important;
+        }
+        
+        /* Ensure proper z-index stacking */
+        .header {
+            z-index: 1000 !important;
+        }
+        
+        .header__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Remove the simple black bar - we'll add the geometric pattern instead */
+        
+        /* Header row fixes */
+        .header__row {
+            display: flex !important;
+        }
+        
+        .header__row.upper {
+            justify-content: flex-end !important;
+            padding: 10px 0;
+        }
+        
+        .header__row.logo-only {
+            justify-content: center !important;
+            padding: 20px 0;
+        }
+        
+        .header__row.lower.three-segment {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .header__row-segment.left {
+            justify-self: start;
+        }
+        
+        .header__row-segment.right {
+            justify-self: end;
+        }
+        
+        .header__links-primary-scroll-container {
+            justify-self: center;
+        }
+        
+        /* Navigation links display fix */
+        .header__links-list {
+            display: flex !important;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header__links-list a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+        
+        .header__links-list a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Social icons display fix */
+        .social-icons {
+            display: flex !important;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .social-icons li {
+            display: inline-block;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .social-icons a:hover {
+            opacity: 1;
+        }
+        
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Announcement bar styles */
+        .announcement-bar {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        .announcement-bar a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Navigation scroll container styles */
+        .scroll-button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0 10px;
+            display: none !important; /* Hide scroll buttons */
+        }
+        
+        .scroll-overflow-indicator-wrap {
+            position: relative;
+            display: none !important; /* Hide scroll indicators */
+        }
+        
+        /* Hide scroll sentinals */
+        .scroll-sentinal {
+            display: none !important;
+        }
+        
+        /* Mobile drawer styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transition: left 0.3s ease;
+        }
+        
+        .drawer--open {
+            left: 0;
+        }
+        
+        .hamburger {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger__bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Logo visibility control */
+        .header__logo .image__img {
+            display: none !important;
+        }
+        
+        /* Show only regular logo by default */
+        .header__logo .regular-logo {
+            display: flex !important;
+        }
+        
+        .header__logo .transparent-logo {
+            display: none !important;
+        }
+        
+        /* Mobile header adjustments */
+        @media (max-width: 960px) {
+            .header__row-desktop {
+                display: none !important;
+            }
+            .header__row-mobile {
+                display: flex !important;
+            }
+        }
+        
+        @media (min-width: 961px) {
+            .header__row-desktop {
+                display: flex !important;
+            }
+            .header__row-mobile {
+                display: none !important;
+            }
+        }
+        
+        /* Mobile drawer menu styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .drawer--open {
+            left: 0;
+        }
+        
+        .drawer__content {
+            padding: 20px;
+        }
+        
+        .drawer__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .drawer__close {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .drawer__inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .drawer__inner li {
+            margin-bottom: 20px;
+        }
+        
+        .drawer__inner a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        
+        /* Cart icon styles */
+        .header__icon-touch {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+        
+        .header__cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Fix page transition overlay */
+        #page-transition-overlay {
+            display: none !important;
+        }
+        
+        /* Main content spacing */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ensure page wrapper takes full height */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
-<body>
-    <header
-      data-section-id="sections--24489168666928__header"
-      data-section-type="header"
-      data-enable-sticky-header="true"
-      class="header header--layout-logo-center-nav-below header--has-logo header--has-transparent-logo header--has-accounts header--navigation-is-all-caps header--has-social-links header--has-country-or-locale"
-      data-is-sticky="true"
-      data-navigation-position="below"
-      data-logo-position="center"
-      style="--logo-width: 130px; --mobile-logo-width: 100px; --color-cart-count-transparent: #000000; --color-text-transparent: #ffffff; --divider-width: 0px;">
+<body class="template-page">
+    <div class="page">
+      
+        <div class="active" id="page-transition-overlay"></div>
+<script>
+  var pageTransitionOverlay = document.getElementById("page-transition-overlay"),
+      internalReferrer = document.referrer.includes(document.location.origin),
+      winPerf = window.performance,
+      navTypeLegacy = winPerf && winPerf.navigation && winPerf.navigation.type,
+      navType = winPerf && winPerf.getEntriesByType && winPerf.getEntriesByType("navigation")[0] && winPerf.getEntriesByType("navigation")[0].type;
+  if (!internalReferrer || navType !== "navigate" || navTypeLegacy !== 0) {
+    
+    pageTransitionOverlay.className = "active skip-animation";
+    setTimeout(function(){
+      pageTransitionOverlay.className = "skip-animation";
+      setTimeout(function(){ pageTransitionOverlay.className = ""; }, 1);
+    }, 1);
+  } else { 
+    setTimeout(function(){
+      pageTransitionOverlay.className = "";
+    }, 500);
+  }
+</script>
+
+      
+
+      <div class="theme-editor-scroll-offset"></div>
+
+      <div class="header__space" data-header-space></div>
+
+      <!-- BEGIN sections: header-group -->
+<div id="shopify-section-sections--24489168666928__announcement-bar" class="shopify-section shopify-section-group-header-group announcement-bar__outer-wrapper"><div
+    
+    class="announcement-bar"
+    data-section-id="sections--24489168666928__announcement-bar"
+    data-section-type="announcement-bar"
+    data-timing="0"
+    data-item-count="1"
+    style="
+      --color-background: #000000;
+      --color-gradient-overlay: #000000;
+      --color-gradient-overlay-transparent: rgba(0, 0, 0, 0);
+      --color-text: #ffffff;
+    "
+  >
+    <div class="ui-overlap-wrap">
+      <div class="ui-overlap">
+        <div class="fader left">
+          <button class="slider-nav-button slider-nav-button-prev" title="Previous">
+            <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+
+          </button>
+        </div>
+        <div class="ui-overlap-item-clones" aria-hidden="true">
+          <div
+        class="announcement-bar__item ff-body fs-body-50 swiper-slide"
+        
+        data-slide
+        
+        data-index="0"
+      ><div class="announcement-bar__item-inner"><a class="announcement-bar__link color-inherit" href="https://laylo.com/blackbookrecords/Collection017">
+              <p><span class="fake-link" href="https://laylo.com/blackbookrecords/Collection017" target="_blank" title="https://laylo.com/blackbookrecords/Collection017"><strong>JOIN THE WAITLIST FOR DROP 017</strong></span></p>
+            </a></div>
+      </div>
+        </div>
+        <div class="fader right">
+          <button class="slider-nav-button slider-nav-button-next" title="Next">
+            <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="swiper"
+      data-slider
+      data-autoplay-enabled="true"
+      data-autoplay-delay="3000"
+    >
+      <div class="swiper-wrapper">
+        <div
+        class="announcement-bar__item ff-body fs-body-50 swiper-slide"
+        
+        data-slide
+        
+        data-index="0"
+      ><div class="announcement-bar__item-inner"><a class="announcement-bar__link color-inherit" href="https://laylo.com/blackbookrecords/Collection017">
+              <p><span class="fake-link" href="https://laylo.com/blackbookrecords/Collection017" target="_blank" title="https://laylo.com/blackbookrecords/Collection017"><strong>JOIN THE WAITLIST FOR DROP 017</strong></span></p>
+            </a></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div><div id="shopify-section-sections--24489168666928__header" class="shopify-section shopify-section-group-header-group header__outer-wrapper"><script>
+  
+  
+    document.documentElement.classList.add("sticky-header-enabled");
+  
+  
+  
+    document.body.classList.add("quick-search-position-left");
+  
+</script><header
+  data-section-id="sections--24489168666928__header"
+  data-section-type="header"
+  
+    data-enable-sticky-header="true"
+  
+  
+  class="
+    header
+    header--layout-logo-center-nav-below
+    header--has-logo
+    
+    
+      header--has-transparent-logo
+    
+    header--has-accounts
+    
+    
+    header--navigation-is-all-caps
+    header--has-social-links
+    header--has-country-or-locale
+  "
+  
+    data-is-sticky="true"
+  
+  data-navigation-position="below"
+  data-logo-position="center"
+  style="
+    --logo-width: 130px;
+    --mobile-logo-width: 100px;
+    --color-cart-count-transparent: #000000;
+    --color-text-transparent: #ffffff;
+    --divider-width: 0px;
+  "
+>
       
       <a href="#main" class="header__skip-to-content btn btn--primary btn--small">Skip to content</a>
       
@@ -678,43 +1037,305 @@
           </div>
         </div>
         
-        <div class="header__row header__row-desktop logo-only">
-          <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
-            <a class="header__logo-link" style="display: block !important; text-align: center !important; width: auto !important;" href="../index.html" aria-label="NoDrama Records">
-              <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
-            </a>
-          </h1>
-        </div>
-        
-        <div class="header__row header__row-desktop lower three-segment">
-          <div class="header__row-segment header__row-segment-desktop left"></div>
-          <div class="header__links-primary-scroll-container" data-scroll-container data-at-start="true" data-at-end="true" data-axis="horizontal">
-            <div data-scroll-container-viewport>
-              <div class="scroll-sentinal scroll-sentinal--start" data-position="start"></div>
-              <nav class="header__links header__links-primary" data-navigation>
-                <ul class="header__links-list fs-navigation-base">
-                  <li><a href="events.html" class="" data-link><span class="link-hover">EVENTS</span></a></li>
-                  <li><a href="artists.html" class="" data-link><span class="link-hover">ARTISTS</span></a></li>
-                  <li><a href="releases.html" class="" data-link><span class="link-hover">RELEASES</span></a></li>
-                  <li><a href="merch.html" class="" data-link><span class="link-hover">MERCH</span></a></li>
-                  <li><a href="studio.html" class="" data-link><span class="link-hover">STUDIO</span></a></li>
-                  <li><a href="podcasts-streams.html" class="" data-link><span class="link-hover">PODCASTS/STREAMS</span></a></li>
-                  <li><a href="contact.html" class="" data-link><span class="link-hover">CONTACT</span></a></li>
-                </ul>
-              </nav>
-              <div class="scroll-sentinal scroll-sentinal--end" data-position="end"></div>
-            </div>
-          </div>
-          <div class="header__row-segment header__row-segment-desktop right">
-            <button class="cart-btn" onclick="toggleCart()">
-              🛒 Cart
-              <div class="cart-count hidden" id="cartCount">0</div>
-            </button>
-          </div>
-        </div>
+    <div class="header__row header__row-desktop logo-only">
+        <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
+    <a
+      class="header__logo-link"
+      style="display: block !important; text-align: center !important; width: auto !important;"
+      href="../index.html"
+      
+        aria-label="NoDrama Records"
+      
+    ><div
+    class="
+      image
+      regular-logo
+      
+      
+      
+    "
+    style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="3200" 
+  height="3200" 
+  src="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_18482.png?v=1747778344&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=150 150w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=360 360w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400 400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=450 450w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=500 500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=550 550w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=600 600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=650 650w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=3000 3000w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div><div
+    class="
+      image
+      transparent-logo
+      
+      
+      
+    "
+    style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="320" 
+  height="320" 
+  src="../cdn/shop/files/blackbook-hands-logoba78.png?v=1699381530&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=60 60w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=80 80w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=120 120w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=140 140w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=160 160w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=180 180w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=220 220w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=260 260w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=320 320w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div></a>
+</h1>
       </div>
-    </header>
+        
+<div class="header__row header__row-desktop lower three-segment">
+      <div class="header__row-segment header__row-segment-desktop left ">
+      </div><div
+    class="header__links-primary-scroll-container"
+    data-scroll-container
+    data-at-start="true"
+    data-at-end="true"
+    data-axis="horizontal"
+  >
+    <button
+      class="scroll-button"
+      data-position="start"
+      data-direction="backwards"
+      title="Previous"
+    >
+      <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+    </button>
+    <div class="scroll-overflow-indicator-wrap" data-position="start">
+      <div class="scroll-overflow-indicator"></div>
+    </div>
+    <div data-scroll-container-viewport>
+      <div class="scroll-sentinal scroll-sentinal--start" data-position="start"></div>
+      <nav class="header__links header__links-primary" data-navigation>
+<ul class="header__links-list fs-navigation-base">
+    <li><a href="events.html" class="" data-link><span class="link-hover">EVENTS</span></a></li>
+    <li><a href="artists.html" class="" data-link><span class="link-hover">ARTISTS</span></a></li>
+    <li><a href="releases.html" class="" data-link><span class="link-hover">RELEASES</span></a></li>
+    <li><a href="merch.html" class="" data-link><span class="link-hover">MERCH</span></a></li>
+    <li><a href="studio.html" class="" data-link><span class="link-hover">STUDIO</span></a></li>
+    <li><a href="podcasts-streams.html" class="" data-link><span class="link-hover">PODCASTS/STREAMS</span></a></li>
+    <li><a href="contact.html" class="" data-link><span class="link-hover">CONTACT</span></a></li>
+</ul>
+</nav>
+      <div class="scroll-sentinal scroll-sentinal--end" data-position="end"></div>
+    </div>
+    <div class="scroll-overflow-indicator-wrap" data-position="end">
+      <div class="scroll-overflow-indicator"></div>
+    </div>
+    <button
+      class="scroll-button"
+      data-position="end"
+      data-direction="forwards"
+      title="Next"
+    >
+      <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+    </button>
+  </div>
+<div class="header__row-segment header__row-segment-desktop right"><a
+    class="header__icon-touch no-transition"
+    href="#"
+    aria-label="Open cart modal"
+    onclick="toggleCart(); return false;"
+  >
+    <span class="header__icon" data-svg-icon>
+      <span class="icon icon-new icon-cart " data-cart-icon>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM18 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM2.213 4.513l1.807-.362a.75.75 0 0 1 .863.578l.345 1.725H20.25a.75.75 0 0 1 .727.933l-1.5 6a.75.75 0 0 1-.727.567H7.628l.294 1.471h10.903a.75.75 0 0 1 0 1.5H7.5a.75.75 0 0 1-.736-.603L4.007 2.557a.75.75 0 0 0-.736-.603L1.5 2.307A.75.75 0 0 1 .893 1.143a.75.75 0 0 1 1.163-.607l1.465.293a2.25 2.25 0 0 1 .692.384Zm3.403 3.443L6.853 14.14h11.311l1.218-4.872a.749.749 0 0 0-.727-.932l-12.7-.015-.339.635Z" fill="currentColor"/></svg>
+</span>
+    </span>
+    
+      <span class="header__cart-count" data-cart-count>
+        0
+      </span>
+    
+  </a>
+      </div>
+    </div>
+    <div class="header__row header__row-mobile">
+      <div class="header__row-segment header__row-segment-mobile left"><button
+  class="
+    hamburger
+    js-drawer-toggle
+    
+  "
+  type="button"
+  data-drawer-toggle="drawer-menu"
+  aria-controls="drawer-menu"
+  aria-expanded="false"
+>
+  <div class="hamburger__bar-wrapper">
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+  </div>
+</button>
+      </div>
+      <div class="header__row-segment header__row-segment-mobile header__row-segment-mobile--logo-only"><h1 class="header__logo">
+    <a
+      class="header__logo-link"
+      
+      href="../index.html"
+      
+        aria-label="NoDrama Records"
+      
+    ><div
+    class="
+      image
+      regular-logo
+      
+      
+      
+    "
+    >
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="3200" 
+  height="3200" 
+  src="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_18482.png?v=1747778344&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=150 150w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=360 360w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400 400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=450 450w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=500 500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=550 550w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=600 600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=650 650w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=3000 3000w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div><div
+    class="
+      image
+      transparent-logo
+      
+      
+      
+    "
+    >
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="320" 
+  height="320" 
+  src="../cdn/shop/files/blackbook-hands-logoba78.png?v=1699381530&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=60 60w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=80 80w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=120 120w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=140 140w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=160 160w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=180 180w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=220 220w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=260 260w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=320 320w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div></a>
+</h1>
+      </div>
+      <div class="header__row-segment header__row-segment-mobile right"><a
+    class="header__icon-touch no-transition"
+    href="#"
+    aria-label="Open cart modal"
+    onclick="toggleCart(); return false;"
+  >
+    <span class="header__icon" data-svg-icon>
+      <span class="icon icon-new icon-cart " data-cart-icon>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM18 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM2.213 4.513l1.807-.362a.75.75 0 0 1 .863.578l.345 1.725H20.25a.75.75 0 0 1 .727.933l-1.5 6a.75.75 0 0 1-.727.567H7.628l.294 1.471h10.903a.75.75 0 0 1 0 1.5H7.5a.75.75 0 0 1-.736-.603L4.007 2.557a.75.75 0 0 0-.736-.603L1.5 2.307A.75.75 0 0 1 .893 1.143a.75.75 0 0 1 1.163-.607l1.465.293a2.25 2.25 0 0 1 .692.384Zm3.403 3.443L6.853 14.14h11.311l1.218-4.872a.749.749 0 0 0-.727-.932l-12.7-.015-.339.635Z" fill="currentColor"/></svg>
+</span>
+    </span>
+    
+      <span class="header__cart-count" data-cart-count>
+        0
+      </span>
+    
+  </a>
+      </div>
+    </div>
+  </div>
+  <div
+  data-drawer="drawer-menu"
+  data-drawer-position="left"
+  class="drawer drawer--left drawer-menu"
+  role="dialog"
+  tabindex="-1"
+  aria-modal="true"
+>
+  <div class="drawer__content">
+    <div class="drawer__header">
+      <div class="ff-body fs-body-50">Menu</div>
+      <button
+        type="button"
+        class="drawer__close js-drawer-toggle"
+        data-drawer-toggle="drawer-menu"
+        aria-controls="drawer-menu"
+        aria-expanded="true"
+      >
+        <span class="icon icon-new icon-cancel " aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6.697 6.697 10.606 10.606m0-10.606L6.697 17.303" stroke="currentColor" stroke-width="2"/></svg>
+</span>
 
+        <span class="visually-hidden">Close Drawer</span>
+      </button>
+    </div>
+    <div class="drawer__inner">
+      <nav class="header__links header__links-mobile" data-navigation>
+        <ul class="ff-body">
+          <li>
+            <a href="events.html">EVENTS</a>
+          </li>
+          <li>
+            <a href="artists.html">ARTISTS</a>
+          </li>
+          <li>
+            <a href="releases.html">RELEASES</a>
+          </li>
+          <li>
+            <a href="merch.html">MERCH</a>
+          </li>
+          <li>
+            <a href="studio.html">STUDIO</a>
+          </li>
+          <li>
+            <a href="podcasts-streams.html">PODCASTS/STREAMS</a>
+          </li>
+          <li>
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+</section>
+</header>
+<script>
+  // Set heading height at component level
+  const header = document.querySelector('[data-section-type="header"]');
+  document.documentElement.style.setProperty('--height-header', header.offsetHeight + 'px');
+</script>
+
+
+
+
+</div>
+<!-- END sections: header-group -->
+
+      <header-overlay class="header-overlay"></header-overlay>
+
+    <main id="main" class="main">
+    
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
@@ -743,9 +1364,9 @@
         </div>
     </div>
 
-    <h1 class="page-title">Merch</h1>
-
-    <div class="products">
+    <section class="shopify-section">
+      <div class="section section--divider-none section--vertical-padding-top-bottom" style="--color-background: #000000;">
+        <div class="products">
         <a href="shirt1.html">
             <img src="../assets/bnkr1.png" alt="BNKR1">
             <div class="product-info">
@@ -789,6 +1410,8 @@
             </div>
         </a>
     </div>
+      </div>
+    </section>
 
     <footer class="quick-links">
         <a href="https://www.instagram.com/nodramarecords">Instagram</a>
@@ -799,6 +1422,25 @@
     </footer>
 
     <script>
+        // Mobile drawer functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const drawerToggles = document.querySelectorAll('[data-drawer-toggle]');
+            const drawer = document.querySelector('[data-drawer="drawer-menu"]');
+            
+            drawerToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const isOpen = drawer.classList.contains('drawer--open');
+                    if (isOpen) {
+                        drawer.classList.remove('drawer--open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    } else {
+                        drawer.classList.add('drawer--open');
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+
         // Cart functionality - persisted using localStorage
         let cart = [];
 
@@ -850,14 +1492,27 @@
             const cartItems = document.getElementById('cartItems');
             const cartFooter = document.getElementById('cartFooter');
             const cartTotal = document.getElementById('cartTotal');
+            const headerCartCounts = document.querySelectorAll('[data-cart-count]');
 
             // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             if (totalItems > 0) {
-                cartCount.textContent = totalItems;
-                cartCount.classList.remove('hidden');
+                if (cartCount) {
+                    cartCount.textContent = totalItems;
+                    cartCount.classList.remove('hidden');
+                }
+                // Update header cart counts
+                headerCartCounts.forEach(count => {
+                    count.textContent = totalItems;
+                });
             } else {
-                cartCount.classList.add('hidden');
+                if (cartCount) {
+                    cartCount.classList.add('hidden');
+                }
+                // Update header cart counts
+                headerCartCounts.forEach(count => {
+                    count.textContent = '0';
+                });
             }
 
             // Update cart items display
@@ -967,5 +1622,11 @@
         window.addToCart = addToCart;
         window.updateCartUI = updateCartUI;
     </script>
+
+    </main><!-- End main -->
+    </div><!-- End .page -->
+
+    <!-- Deferred CSS -->
+    <link href="../cdn/shop/t/64/assets/theme-deferred7095.css?v=90605793427210744251749577087" rel="stylesheet" type="text/css" media="all" />
 </body>
 </html>

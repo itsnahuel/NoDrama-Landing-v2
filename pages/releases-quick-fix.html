@@ -1,0 +1,112 @@
+<!-- Quick Performance Fix for Releases Page -->
+<!-- Add this script to the bottom of releases.html, just before </body> -->
+
+<script>
+// Quick performance optimizations
+(function() {
+    'use strict';
+    
+    // 1. Add lazy loading to all images
+    document.querySelectorAll('img').forEach(function(img) {
+        if (!img.hasAttribute('loading')) {
+            img.loading = 'lazy';
+        }
+    });
+    
+    // 2. Optimize srcsets - replace excessive sizes
+    document.querySelectorAll('img[srcset]').forEach(function(img) {
+        const srcset = img.getAttribute('srcset');
+        if (srcset && srcset.includes('3000w')) {
+            // Extract base URL
+            const match = srcset.match(/([^?]+\?v=[^&]+)/);
+            if (match) {
+                const baseUrl = match[1];
+                // Set optimized srcset
+                img.srcset = `${baseUrl}&width=400 400w, ${baseUrl}&width=800 800w, ${baseUrl}&width=1200 1200w`;
+                img.sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px';
+            }
+        }
+    });
+    
+    // 3. Defer heavy animations
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Temporarily disable heavy animations */
+        @media (prefers-reduced-motion: no-preference) {
+            [class*="fuzzy"], [class*="float-particles"] {
+                animation-duration: 0.1s !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Re-enable animations after page load
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            style.remove();
+        }, 1000);
+    });
+    
+    // 4. Remove duplicate content
+    const seenContent = new Set();
+    document.querySelectorAll('.product-item, .release-item').forEach(function(item) {
+        const content = item.textContent.trim();
+        if (seenContent.has(content)) {
+            item.style.display = 'none';
+        } else {
+            seenContent.add(content);
+        }
+    });
+    
+    // 5. Load images only when visible
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+        
+        // Observe all images
+        document.querySelectorAll('img').forEach(function(img) {
+            imageObserver.observe(img);
+        });
+    }
+})();
+</script>
+
+<!-- Additional CSS for performance -->
+<style>
+/* Optimize image loading */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded, img[loading="lazy"] {
+    opacity: 1;
+}
+
+/* Reduce paint areas */
+.product-item, .release-item {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Optimize text rendering */
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+}
+</style>
