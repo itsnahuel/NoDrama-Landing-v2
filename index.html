@@ -994,6 +994,488 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
   data-resource-timing-sampling-rate="10"
   data-shs="true"
 ></script>
+    <!-- Nav Bar CSS from merch.html -->
+    <style>
+        @font-face {
+            font-family: 'HelveticaNowBold';
+            src: url('fonts/helvetica-now-bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Fuzzy Text Effect */
+        .fuzzy-text {
+            position: relative;
+            display: inline-block;
+            animation: fuzzy-pulse 3s ease-in-out infinite;
+            filter: blur(0px);
+            transition: all 0.3s ease;
+        }
+
+        .fuzzy-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.08),
+                0 0 20px rgba(255, 255, 255, 0.06),
+                0 0 30px rgba(255, 255, 255, 0.04),
+                0 0 40px rgba(255, 255, 255, 0.02);
+            animation: fuzzy-glow 2s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        .fuzzy-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            text-shadow: 
+                0 0 5px rgba(100, 255, 218, 0.07),
+                0 0 15px rgba(200, 100, 255, 0.05),
+                0 0 25px rgba(255, 100, 200, 0.03);
+            animation: fuzzy-shimmer 4s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes fuzzy-pulse {
+            0%, 100% {
+                filter: blur(0px);
+                text-shadow: 
+                    0 0 5px rgba(255, 255, 255, 0.08),
+                    0 0 10px rgba(255, 255, 255, 0.06),
+                    0 0 15px rgba(255, 255, 255, 0.04);
+            }
+            50% {
+                filter: blur(0.5px);
+                text-shadow: 
+                    0 0 8px rgba(255, 255, 255, 0.12),
+                    0 0 16px rgba(255, 255, 255, 0.08),
+                    0 0 24px rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @keyframes fuzzy-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.6),
+                    0 0 20px rgba(255, 255, 255, 0.4),
+                    0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(255, 255, 255, 0.10),
+                    0 0 25px rgba(255, 255, 255, 0.08),
+                    0 0 35px rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @keyframes fuzzy-shimmer {
+            0% {
+                text-shadow: 
+                    0 0 5px rgba(100, 255, 218, 0.05),
+                    0 0 15px rgba(200, 100, 255, 0.03),
+                    0 0 25px rgba(255, 100, 200, 0.02);
+            }
+            33% {
+                text-shadow: 
+                    0 0 8px rgba(255, 100, 200, 0.08),
+                    0 0 18px rgba(100, 255, 218, 0.06),
+                    0 0 28px rgba(200, 100, 255, 0.04);
+            }
+            66% {
+                text-shadow: 
+                    0 0 6px rgba(200, 100, 255, 0.09),
+                    0 0 16px rgba(255, 100, 200, 0.07),
+                    0 0 26px rgba(100, 255, 218, 0.05);
+            }
+            100% {
+                text-shadow: 
+                    0 0 5px rgba(100, 255, 218, 0.05),
+                    0 0 15px rgba(200, 100, 255, 0.03),
+                    0 0 25px rgba(255, 100, 200, 0.02);
+            }
+        }
+
+        .fuzzy-text:hover {
+            filter: blur(0px);
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.20),
+                0 0 20px rgba(255, 255, 255, 0.16),
+                0 0 30px rgba(255, 255, 255, 0.12);
+        }
+
+        .header__skip-to-content {
+            position: absolute;
+            left: -9999px;
+        }
+
+        /* Header overlay fix */
+        .header-overlay {
+            display: none !important;
+        }
+        
+        /* Ensure proper z-index stacking */
+        .header {
+            z-index: 1000 !important;
+            background: #000 !important;
+            position: sticky !important;
+            top: 0 !important;
+        }
+        
+        .header__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: #000 !important;
+        }
+        
+        /* Add black background to all header rows */
+        .header__row {
+            background: #000 !important;
+        }
+        
+        /* Remove transparency from header */
+        .header--transparent {
+            background: #000 !important;
+        }
+        
+        /* Header row fixes */
+        .header__row {
+            display: flex !important;
+        }
+        
+        .header__row.upper {
+            justify-content: flex-end !important;
+            padding: 10px 0;
+        }
+        
+        .header__row.logo-only {
+            justify-content: center !important;
+            padding: 20px 0;
+        }
+        
+        .header__row.lower.three-segment {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .header__row-segment.left {
+            justify-self: start;
+        }
+        
+        .header__row-segment.right {
+            justify-self: end;
+        }
+        
+        .header__links-primary-scroll-container {
+            justify-self: center;
+        }
+        
+        /* Navigation links display fix */
+        .header__links-list {
+            display: flex !important;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header__links-list a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+        
+        .header__links-list a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Fix navigation visibility */
+        .header__links-list.fs-navigation-base {
+            transform: translateY(0px) !important;
+            display: flex !important;
+            visibility: visible !important;
+        }
+        
+        /* AGGRESSIVE SHOPIFY OVERRIDE: Force header to match merch exactly */
+        
+        /* Override all Shopify header variables */
+        header[data-section-type="header"] {
+            --logo-width: 130px !important;
+            --mobile-logo-width: 100px !important;
+            --height-header: auto !important;
+        }
+        
+        /* Force header container to be compact */
+        .header,
+        .header__outer-wrapper,
+        .shopify-section-group-header-group {
+            min-height: auto !important;
+            max-height: none !important;
+            height: auto !important;
+        }
+        
+        /* Aggressive override of all header rows */
+        .header__row {
+            min-height: auto !important;
+            height: auto !important;
+            padding: 5px 0 !important;
+        }
+        
+        .header__row.header__row-desktop.upper {
+            padding: 8px 0 !important;
+        }
+        
+        .header__row.header__row-desktop.logo-only {
+            padding: 15px 0 !important;
+        }
+        
+        .header__row.header__row-desktop.lower.three-segment {
+            height: auto !important;
+            align-items: center !important;
+            padding: 8px 0 !important;
+        }
+        
+        /* Block the dynamic height script */
+        :root {
+            --height-header: auto !important;
+        }
+        
+        /* Social icons display fix */
+        .social-icons {
+            display: flex !important;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .social-icons li {
+            display: inline-block;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .social-icons a:hover {
+            opacity: 1;
+        }
+        
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Announcement bar styles */
+        .announcement-bar {
+            background: #000 !important;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        /* Ensure the header space also has black background */
+        .header__space {
+            background: #000 !important;
+        }
+        
+        .announcement-bar a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Navigation scroll container styles */
+        .scroll-button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0 10px;
+            display: none !important; /* Hide scroll buttons */
+        }
+        
+        .scroll-overflow-indicator-wrap {
+            position: relative;
+            display: none !important; /* Hide scroll indicators */
+        }
+        
+        /* Hide scroll sentinals */
+        .scroll-sentinal {
+            display: none !important;
+        }
+        
+        /* Mobile drawer styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .drawer--open {
+            left: 0;
+        }
+        
+        .drawer__content {
+            padding: 20px;
+        }
+        
+        .drawer__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .drawer__close {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .drawer__inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .drawer__inner li {
+            margin-bottom: 20px;
+        }
+        
+        .drawer__inner a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        
+        .hamburger {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger__bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Cart icon styles */
+        .header__icon-touch {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+        
+        .header__cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Logo visibility control */
+        .header__logo .image__img {
+            display: none !important;
+        }
+        
+        /* Show only regular logo by default */
+        .header__logo .regular-logo {
+            display: flex !important;
+        }
+        
+        .header__logo .transparent-logo {
+            display: none !important;
+        }
+        
+        /* Mobile header adjustments */
+        @media (max-width: 960px) {
+            .header__row-desktop {
+                display: none !important;
+            }
+            .header__row-mobile {
+                display: flex !important;
+            }
+        }
+        
+        @media (min-width: 961px) {
+            .header__row-desktop {
+                display: flex !important;
+            }
+            .header__row-mobile {
+                display: none !important;
+            }
+        }
+        
+        /* Fix page transition overlay */
+        #page-transition-overlay {
+            display: none !important;
+        }
+        
+        /* Main content spacing */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ensure page wrapper takes full height */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 
   <body class="template-index">

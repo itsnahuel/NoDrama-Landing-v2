@@ -1035,6 +1035,29 @@ window.ShopifyPay.apiHost = "shop.app\/pay";</script>
     animation-play-state: running;
   }
 
+  /* Header overlay fix */
+  .header-overlay {
+      display: none !important;
+  }
+  
+  /* Ensure proper z-index stacking */
+  .header {
+      z-index: 1000 !important;
+      background: #000 !important;
+      position: sticky !important;
+      top: 0 !important;
+  }
+  
+  /* Announcement bar styles */
+  .announcement-bar {
+      background: #000 !important;
+  }
+  
+  /* Ensure the header space also has black background */
+  .header__space {
+      background: #000 !important;
+  }
+
 </style>
 </head>
 

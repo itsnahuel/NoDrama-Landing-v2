@@ -578,15 +578,27 @@
         /* Ensure proper z-index stacking */
         .header {
             z-index: 1000 !important;
+            background: #000 !important;
+            position: sticky !important;
+            top: 0 !important;
         }
         
         .header__inner {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            background: #000 !important;
         }
         
-        /* Remove the simple black bar - we'll add the geometric pattern instead */
+        /* Add black background to all header rows */
+        .header__row {
+            background: #000 !important;
+        }
+        
+        /* Remove transparency from header */
+        .header--transparent {
+            background: #000 !important;
+        }
         
         /* Header row fixes */
         .header__row {
@@ -674,10 +686,15 @@
         
         /* Announcement bar styles */
         .announcement-bar {
-            background: #000;
+            background: #000 !important;
             color: #fff;
             text-align: center;
             padding: 10px 0;
+        }
+        
+        /* Ensure the header space also has black background */
+        .header__space {
+            background: #000 !important;
         }
         
         .announcement-bar a {
