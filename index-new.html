@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Merch - NoDrama Records</title>
+    
+    <!-- Custom CSS for page-specific styles only -->
+    
+    <style>
+        @font-face {
+            font-family: 'HelveticaNowBold';
+            src: url('../fonts/helvetica-now-bold.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'HelveticaNowBold', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        /* Remove all custom header styles - let theme handle it */
+        .header__logo .image__img {
+            display: none !important;
+        }
+
+        /* Fuzzy Text Effect */
+        .fuzzy-text {
+            position: relative;
+            display: inline-block;
+            animation: fuzzy-pulse 3s ease-in-out infinite;
+            filter: blur(0px);
+            transition: all 0.3s ease;
+        }
+
+        .fuzzy-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.08),
+                0 0 20px rgba(255, 255, 255, 0.06),
+                0 0 30px rgba(255, 255, 255, 0.04),
+                0 0 40px rgba(255, 255, 255, 0.02);
+            animation: fuzzy-glow 2s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        .fuzzy-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            text-shadow: 
+                0 0 5px rgba(100, 255, 218, 0.07),
+                0 0 15px rgba(200, 100, 255, 0.05),
+                0 0 25px rgba(255, 100, 200, 0.03);
+            animation: fuzzy-shimmer 4s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes fuzzy-pulse {
+            0%, 100% {
+                filter: blur(0px);
+                text-shadow: 
+                    0 0 5px rgba(255, 255, 255, 0.08),
+                    0 0 10px rgba(255, 255, 255, 0.06),
+                    0 0 15px rgba(255, 255, 255, 0.04);
+            }
+            50% {
+                filter: blur(0.5px);
+                text-shadow: 
+                    0 0 8px rgba(255, 255, 255, 0.12),
+                    0 0 16px rgba(255, 255, 255, 0.08),
+                    0 0 24px rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @keyframes fuzzy-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.6),
+                    0 0 20px rgba(255, 255, 255, 0.4),
+                    0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(255, 255, 255, 0.10),
+                    0 0 25px rgba(255, 255, 255, 0.08),
+                    0 0 35px rgba(255, 255, 255, 0.06);
+            }
+        }
+
+        @keyframes fuzzy-shimmer {
+            0% {
+                text-shadow: 
+                    0 0 5px rgba(100, 255, 218, 0.05),
+                    0 0 15px rgba(200, 100, 255, 0.03),
+                    0 0 25px rgba(255, 100, 200, 0.02);
+            }
+            33% {
+                text-shadow: 
+                    0 0 8px rgba(255, 100, 200, 0.08),
+                    0 0 18px rgba(100, 255, 218, 0.06),
+                    0 0 28px rgba(200, 100, 255, 0.04);
+            }
+            66% {
+                text-shadow: 
+                    0 0 6px rgba(200, 100, 255, 0.09),
+                    0 0 16px rgba(255, 100, 200, 0.07),
+                    0 0 26px rgba(100, 255, 218, 0.05);
+            }
+            100% {
+                text-shadow: 
+                    0 0 5px rgba(100, 255, 218, 0.05),
+                    0 0 15px rgba(200, 100, 255, 0.03),
+                    0 0 25px rgba(255, 100, 200, 0.02);
+            }
+        }
+
+        .fuzzy-text:hover {
+            filter: blur(0px);
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.20),
+                0 0 20px rgba(255, 255, 255, 0.16),
+                0 0 30px rgba(255, 255, 255, 0.12);
+        }
+
+        .header__skip-to-content {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .cart-btn {
+            position: relative;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .cart-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff0080;
+            color: #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 24px;
+        }
+
+        .cart-count.hidden {
+            display: none;
+        }
+
+        /* Page Title */
+        .page-title {
+            margin: 40px auto 60px auto;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: #111;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 70vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .cart-header {
+            padding: 20px 25px 15px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .cart-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-items {
+            padding: 15px 25px;
+            min-height: 150px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .cart-item-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+        }
+
+        .cart-item-size {
+            font-size: 12px;
+            color: #aaa;
+            margin: 0 0 4px 0;
+        }
+
+        .cart-item-price {
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .quantity-display {
+            min-width: 24px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .remove-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #aaa;
+        }
+
+        .cart-empty h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+        }
+
+        .cart-footer {
+            padding: 15px 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .cart-total-price {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cart-action-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-action-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+        }
+
+        .cart-action-btn.checkout {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.8);
+            color: #fff;
+        }
+
+        .cart-action-btn.checkout:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+        }
+
+        /* Products Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products a img {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .products a img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Footer - Quick Links style from 2019 */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 80px auto 40px auto;
+            padding: 20px;
+            color: #aaa;
+            font-size: 14px;
+            border-top: 1px solid #111;
+        }
+
+        .quick-links a {
+            color: #aaa;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+                margin: 100px auto 40px auto;
+            }
+
+            .header-content {
+                padding: 0 15px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .back-btn, .cart-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+
+            .main-nav {
+                margin: 0;
+                order: 2;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .cart-btn {
+                order: 3;
+                align-self: center;
+            }
+
+            .back-btn {
+                order: 1;
+                align-self: flex-start;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin: 40px auto 80px auto;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cart-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+        }
+    </style>
+    
+    <!-- Shopify Theme CSS -->
+    <link href="../cdn/shop/t/64/assets/theme125f.css?v=43640527189650912531749577087" rel="stylesheet" type="text/css" media="all" />
+    <link href="../cdn/shop/t/64/assets/custombd13.css?v=163912552749196074211749577087" rel="stylesheet" type="text/css" media="all" />
+    
+    <!-- Fuzzy text animation styles -->
+    <style>
+        @keyframes fuzzy-pulse {
+            0%, 100% { filter: blur(0.5px) brightness(1); }
+            50% { filter: blur(1px) brightness(1.1); }
+        }
+        
+        .fuzzy-text {
+            animation: fuzzy-pulse 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Header overlay fix */
+        .header-overlay {
+            display: none !important;
+        }
+        
+        /* Ensure proper z-index stacking */
+        .header {
+            z-index: 1000 !important;
+            background: #000 !important;
+            position: sticky !important;
+            top: 0 !important;
+        }
+        
+        .header__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background: #000 !important;
+        }
+        
+        /* Add black background to all header rows */
+        .header__row {
+            background: #000 !important;
+        }
+        
+        /* Remove transparency from header */
+        .header--transparent {
+            background: #000 !important;
+        }
+        
+        /* Header row fixes */
+        .header__row {
+            display: flex !important;
+        }
+        
+        .header__row.upper {
+            justify-content: flex-end !important;
+            padding: 10px 0;
+        }
+        
+        .header__row.logo-only {
+            justify-content: center !important;
+            padding: 20px 0;
+        }
+        
+        .header__row.lower.three-segment {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .header__row-segment.left {
+            justify-self: start;
+        }
+        
+        .header__row-segment.right {
+            justify-self: end;
+        }
+        
+        .header__links-primary-scroll-container {
+            justify-self: center;
+        }
+        
+        /* Navigation links display fix */
+        .header__links-list {
+            display: flex !important;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header__links-list a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            padding: 10px 0;
+        }
+        
+        .header__links-list a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Social icons display fix */
+        .social-icons {
+            display: flex !important;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .social-icons li {
+            display: inline-block;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .social-icons a:hover {
+            opacity: 1;
+        }
+        
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Announcement bar styles */
+        .announcement-bar {
+            background: #000 !important;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        /* Ensure the header space also has black background */
+        .header__space {
+            background: #000 !important;
+        }
+        
+        .announcement-bar a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Navigation scroll container styles */
+        .scroll-button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0 10px;
+            display: none !important; /* Hide scroll buttons */
+        }
+        
+        .scroll-overflow-indicator-wrap {
+            position: relative;
+            display: none !important; /* Hide scroll indicators */
+        }
+        
+        /* Hide scroll sentinals */
+        .scroll-sentinal {
+            display: none !important;
+        }
+        
+        /* Mobile drawer styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transition: left 0.3s ease;
+        }
+        
+        .drawer--open {
+            left: 0;
+        }
+        
+        .hamburger {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger__bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Logo visibility control */
+        .header__logo .image__img {
+            display: none !important;
+        }
+        
+        /* Show only regular logo by default */
+        .header__logo .regular-logo {
+            display: flex !important;
+        }
+        
+        .header__logo .transparent-logo {
+            display: none !important;
+        }
+        
+        /* Mobile header adjustments */
+        @media (max-width: 960px) {
+            .header__row-desktop {
+                display: none !important;
+            }
+            .header__row-mobile {
+                display: flex !important;
+            }
+        }
+        
+        @media (min-width: 961px) {
+            .header__row-desktop {
+                display: flex !important;
+            }
+            .header__row-mobile {
+                display: none !important;
+            }
+        }
+        
+        /* Mobile drawer menu styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .drawer--open {
+            left: 0;
+        }
+        
+        .drawer__content {
+            padding: 20px;
+        }
+        
+        .drawer__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .drawer__close {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .drawer__inner ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .drawer__inner li {
+            margin-bottom: 20px;
+        }
+        
+        .drawer__inner a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        
+        /* Cart icon styles */
+        .header__icon-touch {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+        
+        .header__cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Fix page transition overlay */
+        #page-transition-overlay {
+            display: none !important;
+        }
+        
+        /* Main content spacing */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Ensure page wrapper takes full height */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="template-page">
+    <div class="page">
+      
+        <div class="active" id="page-transition-overlay"></div>
+<script>
+  var pageTransitionOverlay = document.getElementById("page-transition-overlay"),
+      internalReferrer = document.referrer.includes(document.location.origin),
+      winPerf = window.performance,
+      navTypeLegacy = winPerf && winPerf.navigation && winPerf.navigation.type,
+      navType = winPerf && winPerf.getEntriesByType && winPerf.getEntriesByType("navigation")[0] && winPerf.getEntriesByType("navigation")[0].type;
+  if (!internalReferrer || navType !== "navigate" || navTypeLegacy !== 0) {
+    
+    pageTransitionOverlay.className = "active skip-animation";
+    setTimeout(function(){
+      pageTransitionOverlay.className = "skip-animation";
+      setTimeout(function(){ pageTransitionOverlay.className = ""; }, 1);
+    }, 1);
+  } else { 
+    setTimeout(function(){
+      pageTransitionOverlay.className = "";
+    }, 500);
+  }
+</script>
+
+      
+
+      <div class="theme-editor-scroll-offset"></div>
+
+      <div class="header__space" data-header-space></div>
+
+      <!-- BEGIN sections: header-group -->
+<div id="shopify-section-sections--24489168666928__announcement-bar" class="shopify-section shopify-section-group-header-group announcement-bar__outer-wrapper"><div
+    
+    class="announcement-bar"
+    data-section-id="sections--24489168666928__announcement-bar"
+    data-section-type="announcement-bar"
+    data-timing="0"
+    data-item-count="1"
+    style="
+      --color-background: #000000;
+      --color-gradient-overlay: #000000;
+      --color-gradient-overlay-transparent: rgba(0, 0, 0, 0);
+      --color-text: #ffffff;
+    "
+  >
+    <div class="ui-overlap-wrap">
+      <div class="ui-overlap">
+        <div class="fader left">
+          <button class="slider-nav-button slider-nav-button-prev" title="Previous">
+            <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+
+          </button>
+        </div>
+        <div class="ui-overlap-item-clones" aria-hidden="true">
+          <div
+        class="announcement-bar__item ff-body fs-body-50 swiper-slide"
+        
+        data-slide
+        
+        data-index="0"
+      ><div class="announcement-bar__item-inner"><a class="announcement-bar__link color-inherit" href="https://laylo.com/blackbookrecords/Collection017">
+              <p><span class="fake-link" href="https://laylo.com/blackbookrecords/Collection017" target="_blank" title="https://laylo.com/blackbookrecords/Collection017"><strong>JOIN THE WAITLIST FOR DROP 017</strong></span></p>
+            </a></div>
+      </div>
+        </div>
+        <div class="fader right">
+          <button class="slider-nav-button slider-nav-button-next" title="Next">
+            <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="swiper"
+      data-slider
+      data-autoplay-enabled="true"
+      data-autoplay-delay="3000"
+    >
+      <div class="swiper-wrapper">
+        <div
+        class="announcement-bar__item ff-body fs-body-50 swiper-slide"
+        
+        data-slide
+        
+        data-index="0"
+      ><div class="announcement-bar__item-inner"><a class="announcement-bar__link color-inherit" href="https://laylo.com/blackbookrecords/Collection017">
+              <p><span class="fake-link" href="https://laylo.com/blackbookrecords/Collection017" target="_blank" title="https://laylo.com/blackbookrecords/Collection017"><strong>JOIN THE WAITLIST FOR DROP 017</strong></span></p>
+            </a></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div><div id="shopify-section-sections--24489168666928__header" class="shopify-section shopify-section-group-header-group header__outer-wrapper"><script>
+  
+  
+    document.documentElement.classList.add("sticky-header-enabled");
+  
+  
+  
+    document.body.classList.add("quick-search-position-left");
+  
+</script><header
+  data-section-id="sections--24489168666928__header"
+  data-section-type="header"
+  
+    data-enable-sticky-header="true"
+  
+  
+  class="
+    header
+    header--layout-logo-center-nav-below
+    header--has-logo
+    
+    
+      header--has-transparent-logo
+    
+    header--has-accounts
+    
+    
+    header--navigation-is-all-caps
+    header--has-social-links
+    header--has-country-or-locale
+  "
+  
+    data-is-sticky="true"
+  
+  data-navigation-position="below"
+  data-logo-position="center"
+  style="
+    --logo-width: 130px;
+    --mobile-logo-width: 100px;
+    --color-cart-count-transparent: #000000;
+    --color-text-transparent: #ffffff;
+    --divider-width: 0px;
+  "
+>
+      
+      <a href="#main" class="header__skip-to-content btn btn--primary btn--small">Skip to content</a>
+      
+      <div class="header__inner">
+        <div class="header__row header__row-desktop upper">
+          <div class="header__row-segment header__row-segment-desktop left"></div>
+          <div class="header__row-segment header__row-segment-desktop header__row-segment-desktop--logo-left right">
+            <ul class="social-icons social-icons--left" data-count="5">
+              <li><a href="https://www.facebook.com/groups/chrislake" title="NoDrama Records on Facebook" target="_blank" rel="noopener"><span class="icon icon-new icon-facebook"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12,2C6.477,2,2,6.477,2,12c0,5.013,3.693,9.153,8.505,9.876V14.65H8.031v-2.629h2.474v-1.749 c0-2.896,1.411-4.167,3.818-4.167c1.153,0,1.762,0.085,2.051,0.124v2.294h-1.642c-1.022,0-1.379,0.969-1.379,2.061v1.437h2.995 l-0.406,2.629h-2.588v7.247C18.235,21.236,22,17.062,22,12C22,6.477,17.523,2,12,2z" fill="currentColor" /></svg></span></a></li>
+              <li><a href="https://twitter.com/chrislake?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" title="NoDrama Records on Twitter" target="_blank" rel="noopener"><span class="icon icon-new icon-twitter"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9617 5.80742C21.2242 6.13158 20.4367 6.35242 19.6075 6.45325C20.4525 5.94408 21.1025 5.14158 21.41 4.18408C20.6175 4.64658 19.7392 4.98325 18.8042 5.17075C18.0575 4.37158 16.9933 3.87158 15.8117 3.87158C13.5475 3.87158 11.7117 5.70742 11.7117 7.96908C11.7117 8.29408 11.7492 8.60658 11.8175 8.90575C8.40917 8.74492 5.38833 7.10825 3.36667 4.63408C3.01083 5.23575 2.81167 5.93492 2.81167 6.69658C2.81167 8.12158 3.53667 9.37408 4.635 10.1099C3.9625 10.0882 3.33 9.90325 2.77833 9.59658V9.64742C2.77833 11.6349 4.18917 13.2924 6.06667 13.6699C5.7225 13.7624 5.35917 13.8124 4.98667 13.8124C4.725 13.8124 4.47417 13.7874 4.22333 13.7407C4.74917 15.3682 6.26083 16.5549 8.06 16.5882C6.66 17.6874 4.88583 18.3424 2.975 18.3424C2.65 18.3424 2.32583 18.3232 2 18.2866C3.82417 19.4482 5.97333 20.1274 8.2975 20.1274C15.8425 20.1274 19.9633 13.8807 19.9633 8.47242C19.9633 8.29825 19.9633 8.12242 19.9508 7.94742C20.7517 7.37325 21.4508 6.64742 22.0008 5.82408L21.9617 5.80742Z" fill="currentColor" /></svg></span></a></li>
+              <li><a href="https://www.instagram.com/chrislake/" title="NoDrama Records on Instagram" target="_blank" rel="noopener"><span class="icon icon-new icon-instagram"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" fill="currentColor" /></svg></span></a></li>
+              <li><a href="https://www.tiktok.com/@chrislake?lang=en" title="NoDrama Records on Tiktok" target="_blank" rel="noopener"><span class="icon icon-new icon-tiktok"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.16 1.35c.35 3 2 4.83 5 5v3.4a7.79 7.79 0 0 1-4.92-1.44v6.36c0 8.07-8.8 10.59-12.34 4.81C1.59 15.77 3 9.24 10.28 9v3.59a11.24 11.24 0 0 0-1.69.41c-1.62.55-2.54 1.58-2.29 3.4.49 3.47 6.87 4.5 6.34-2.29V1.36h3.52z" fill="currentColor"/></svg></span></a></li>
+              <li><a href="https://www.youtube.com/@chrislakeofficial" title="NoDrama Records on YouTube" target="_blank" rel="noopener"><span class="icon icon-new icon-youtube"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" fill="currentColor" /></svg></span></a></li>
+            </ul>
+            <nav class="header__cross-border fs-body-50" data-secondary-navigation></nav>
+          </div>
+        </div>
+        
+    <div class="header__row header__row-desktop logo-only">
+        <h1 class="header__logo" style="position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; margin: 0 !important; z-index: 999 !important;">
+    <a
+      class="header__logo-link"
+      style="display: block !important; text-align: center !important; width: auto !important;"
+      href="../index.html"
+      
+        aria-label="NoDrama Records"
+      
+    ><div
+    class="
+      image
+      regular-logo
+      
+      
+      
+    "
+    style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    <span class="fuzzy-text" data-text="NoDrama Records" style="font-size: 2.5rem; font-weight: bold; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif; white-space: nowrap;">NoDrama Records</span>
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="3200" 
+  height="3200" 
+  src="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_18482.png?v=1747778344&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=150 150w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=360 360w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400 400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=450 450w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=500 500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=550 550w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=600 600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=650 650w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=3000 3000w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div><div
+    class="
+      image
+      transparent-logo
+      
+      
+      
+    "
+    style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="320" 
+  height="320" 
+  src="../cdn/shop/files/blackbook-hands-logoba78.png?v=1699381530&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=60 60w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=80 80w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=120 120w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=140 140w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=160 160w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=180 180w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=220 220w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=260 260w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=320 320w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div></a>
+</h1>
+      </div>
+        
+<div class="header__row header__row-desktop lower three-segment">
+      <div class="header__row-segment header__row-segment-desktop left ">
+      </div><div
+    class="header__links-primary-scroll-container"
+    data-scroll-container
+    data-at-start="true"
+    data-at-end="true"
+    data-axis="horizontal"
+  >
+    <button
+      class="scroll-button"
+      data-position="start"
+      data-direction="backwards"
+      title="Previous"
+    >
+      <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+    </button>
+    <div class="scroll-overflow-indicator-wrap" data-position="start">
+      <div class="scroll-overflow-indicator"></div>
+    </div>
+    <div data-scroll-container-viewport>
+      <div class="scroll-sentinal scroll-sentinal--start" data-position="start"></div>
+      <nav class="header__links header__links-primary" data-navigation>
+<ul class="header__links-list fs-navigation-base">
+    <li><a href="events.html" class="" data-link><span class="link-hover">EVENTS</span></a></li>
+    <li><a href="artists.html" class="" data-link><span class="link-hover">ARTISTS</span></a></li>
+    <li><a href="releases.html" class="" data-link><span class="link-hover">RELEASES</span></a></li>
+    <li><a href="merch.html" class="" data-link><span class="link-hover">MERCH</span></a></li>
+    <li><a href="studio.html" class="" data-link><span class="link-hover">STUDIO</span></a></li>
+    <li><a href="podcasts-streams.html" class="" data-link><span class="link-hover">PODCASTS/STREAMS</span></a></li>
+    <li><a href="contact.html" class="" data-link><span class="link-hover">CONTACT</span></a></li>
+</ul>
+</nav>
+      <div class="scroll-sentinal scroll-sentinal--end" data-position="end"></div>
+    </div>
+    <div class="scroll-overflow-indicator-wrap" data-position="end">
+      <div class="scroll-overflow-indicator"></div>
+    </div>
+    <button
+      class="scroll-button"
+      data-position="end"
+      data-direction="forwards"
+      title="Next"
+    >
+      <span class="icon icon-new icon-chevron ">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.875 7.438 12 17.563 22.125 7.438" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+    </button>
+  </div>
+<div class="header__row-segment header__row-segment-desktop right"><a
+    class="header__icon-touch no-transition"
+    href="#"
+    aria-label="Open cart modal"
+    onclick="toggleCart(); return false;"
+  >
+    <span class="header__icon" data-svg-icon>
+      <span class="icon icon-new icon-cart " data-cart-icon>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM18 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM2.213 4.513l1.807-.362a.75.75 0 0 1 .863.578l.345 1.725H20.25a.75.75 0 0 1 .727.933l-1.5 6a.75.75 0 0 1-.727.567H7.628l.294 1.471h10.903a.75.75 0 0 1 0 1.5H7.5a.75.75 0 0 1-.736-.603L4.007 2.557a.75.75 0 0 0-.736-.603L1.5 2.307A.75.75 0 0 1 .893 1.143a.75.75 0 0 1 1.163-.607l1.465.293a2.25 2.25 0 0 1 .692.384Zm3.403 3.443L6.853 14.14h11.311l1.218-4.872a.749.749 0 0 0-.727-.932l-12.7-.015-.339.635Z" fill="currentColor"/></svg>
+</span>
+    </span>
+    
+      <span class="header__cart-count" data-cart-count>
+        0
+      </span>
+    
+  </a>
+      </div>
+    </div>
+    <div class="header__row header__row-mobile">
+      <div class="header__row-segment header__row-segment-mobile left"><button
+  class="
+    hamburger
+    js-drawer-toggle
+    
+  "
+  type="button"
+  data-drawer-toggle="drawer-menu"
+  aria-controls="drawer-menu"
+  aria-expanded="false"
+>
+  <div class="hamburger__bar-wrapper">
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+    <span class="hamburger__bar"></span>
+  </div>
+</button>
+      </div>
+      <div class="header__row-segment header__row-segment-mobile header__row-segment-mobile--logo-only"><h1 class="header__logo">
+    <a
+      class="header__logo-link"
+      
+      href="../index.html"
+      
+        aria-label="NoDrama Records"
+      
+    ><div
+    class="
+      image
+      regular-logo
+      
+      
+      
+    "
+    >
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="3200" 
+  height="3200" 
+  src="../cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_18482.png?v=1747778344&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=150 150w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=360 360w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=400 400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=450 450w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=500 500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=550 550w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=600 600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=650 650w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=700 700w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=750 750w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=800 800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=850 850w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=900 900w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=950 950w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1000 1000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1100 1100w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1200 1200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1300 1300w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1400 1400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1500 1500w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1600 1600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=1800 1800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2000 2000w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2200 2200w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2400 2400w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2600 2600w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=2800 2800w, //www.blackbookrecs.com/cdn/shop/files/BBR_Infared_Tee_Natural_Techpack-3200-BACK_1.png?v=1747778344&width=3000 3000w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div><div
+    class="
+      image
+      transparent-logo
+      
+      
+      
+    "
+    >
+    
+    
+<img
+  alt="" 
+  class="image__img" 
+  
+  width="320" 
+  height="320" 
+  src="../cdn/shop/files/blackbook-hands-logoba78.png?v=1699381530&amp;width=320" 
+  
+  srcset="//www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=60 60w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=80 80w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=100 100w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=120 120w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=140 140w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=160 160w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=180 180w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=200 200w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=220 220w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=240 240w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=260 260w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=280 280w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=300 300w, //www.blackbookrecs.com/cdn/shop/files/blackbook-hands-logo.png?v=1699381530&width=320 320w" 
+  sizes="(max-width: 960px) 100px, 130px"
+  onload="javascript: this.closest('.image').classList.add('loaded')"
+/>
+  </div></a>
+</h1>
+      </div>
+      <div class="header__row-segment header__row-segment-mobile right"><a
+    class="header__icon-touch no-transition"
+    href="#"
+    aria-label="Open cart modal"
+    onclick="toggleCart(); return false;"
+  >
+    <span class="header__icon" data-svg-icon>
+      <span class="icon icon-new icon-cart " data-cart-icon>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM18 21.75a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25ZM2.213 4.513l1.807-.362a.75.75 0 0 1 .863.578l.345 1.725H20.25a.75.75 0 0 1 .727.933l-1.5 6a.75.75 0 0 1-.727.567H7.628l.294 1.471h10.903a.75.75 0 0 1 0 1.5H7.5a.75.75 0 0 1-.736-.603L4.007 2.557a.75.75 0 0 0-.736-.603L1.5 2.307A.75.75 0 0 1 .893 1.143a.75.75 0 0 1 1.163-.607l1.465.293a2.25 2.25 0 0 1 .692.384Zm3.403 3.443L6.853 14.14h11.311l1.218-4.872a.749.749 0 0 0-.727-.932l-12.7-.015-.339.635Z" fill="currentColor"/></svg>
+</span>
+    </span>
+    
+      <span class="header__cart-count" data-cart-count>
+        0
+      </span>
+    
+  </a>
+      </div>
+    </div>
+  </div>
+  <div
+  data-drawer="drawer-menu"
+  data-drawer-position="left"
+  class="drawer drawer--left drawer-menu"
+  role="dialog"
+  tabindex="-1"
+  aria-modal="true"
+>
+  <div class="drawer__content">
+    <div class="drawer__header">
+      <div class="ff-body fs-body-50">Menu</div>
+      <button
+        type="button"
+        class="drawer__close js-drawer-toggle"
+        data-drawer-toggle="drawer-menu"
+        aria-controls="drawer-menu"
+        aria-expanded="true"
+      >
+        <span class="icon icon-new icon-cancel " aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6.697 6.697 10.606 10.606m0-10.606L6.697 17.303" stroke="currentColor" stroke-width="2"/></svg>
+</span>
+
+        <span class="visually-hidden">Close Drawer</span>
+      </button>
+    </div>
+    <div class="drawer__inner">
+      <nav class="header__links header__links-mobile" data-navigation>
+        <ul class="ff-body">
+          <li>
+            <a href="events.html">EVENTS</a>
+          </li>
+          <li>
+            <a href="artists.html">ARTISTS</a>
+          </li>
+          <li>
+            <a href="releases.html">RELEASES</a>
+          </li>
+          <li>
+            <a href="merch.html">MERCH</a>
+          </li>
+          <li>
+            <a href="studio.html">STUDIO</a>
+          </li>
+          <li>
+            <a href="podcasts-streams.html">PODCASTS/STREAMS</a>
+          </li>
+          <li>
+            <a href="contact.html">CONTACT</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+</section>
+</header>
+<script>
+  // Set heading height at component level
+  const header = document.querySelector('[data-section-type="header"]');
+  document.documentElement.style.setProperty('--height-header', header.offsetHeight + 'px');
+</script>
+
+
+
+
+</div>
+<!-- END sections: header-group -->
+
+      <header-overlay class="header-overlay"></header-overlay>
+
+    <main id="main" class="main">
+    
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="cart-close" onclick="toggleCart()">×</button>
+            </div>
+
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty" id="cartEmpty">
+                    <h3>Your cart is empty</h3>
+                    <p>Add some items to get started</p>
+                </div>
+            </div>
+
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-price" id="cartTotal">$0.00</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="cart-action-btn" onclick="toggleCart()">Continue Shopping</button>
+                    <button class="cart-action-btn checkout" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="shopify-section">
+      <div class="section section--divider-none section--vertical-padding-top-bottom" style="--color-background: #000000;">
+        <div class="products">
+        <a href="shirt1.html">
+            <img src="../assets/bnkr1.png" alt="BNKR1">
+            <div class="product-info">
+                <div class="product-name">BNKR1</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+        <a href="shirt2.html">
+            <img src="../assets/bnkr2.png" alt="BNKR2">
+            <div class="product-info">
+                <div class="product-name">BNKR2</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+        <a href="shirt3.html">
+            <img src="../assets/bnkr3.png" alt="BNKR3">
+            <div class="product-info">
+                <div class="product-name">BNKR3</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+        <a href="shirt4.html">
+            <img src="../assets/bnkr4.png" alt="BNKR4">
+            <div class="product-info">
+                <div class="product-name">BNKR4</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+        <a href="shirt5.html">
+            <img src="../assets/bnkr5.png" alt="BNKR5">
+            <div class="product-info">
+                <div class="product-name">BNKR5</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+        <a href="shirt6.html">
+            <img src="../assets/bnkr6.png" alt="BNKR6">
+            <div class="product-info">
+                <div class="product-name">BNKR6</div>
+                <div class="product-price">$30.00</div>
+            </div>
+        </a>
+    </div>
+      </div>
+    </section>
+
+    <footer class="quick-links">
+        <a href="https://www.instagram.com/nodramarecords">Instagram</a>
+        <a href="contact.html">Contact</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="returns.html">Returns</a>
+        <a href="size-guide.html">Size Guide</a>
+    </footer>
+
+    <script>
+        // Mobile drawer functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const drawerToggles = document.querySelectorAll('[data-drawer-toggle]');
+            const drawer = document.querySelector('[data-drawer="drawer-menu"]');
+            
+            drawerToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const isOpen = drawer.classList.contains('drawer--open');
+                    if (isOpen) {
+                        drawer.classList.remove('drawer--open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    } else {
+                        drawer.classList.add('drawer--open');
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+
+        // Cart functionality - persisted using localStorage
+        let cart = [];
+
+        function loadCart() {
+            try {
+                const data = localStorage.getItem('nodrama-cart');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('nodrama-cart', JSON.stringify(cart));
+        }
+
+        // Product data
+        const products = {
+            'BNKR1': { name: 'BNKR1', price: 30, image: '../assets/bnkr1.png' },
+            'BNKR2': { name: 'BNKR2', price: 30, image: '../assets/bnkr2.png' },
+            'BNKR3': { name: 'BNKR3', price: 30, image: '../assets/bnkr3.png' },
+            'BNKR4': { name: 'BNKR4', price: 30, image: '../assets/bnkr4.png' },
+            'BNKR5': { name: 'BNKR5', price: 30, image: '../assets/bnkr5.png' },
+            'BNKR6': { name: 'BNKR6', price: 30, image: '../assets/bnkr6.png' }
+        };
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            cart = loadCart();
+            updateCartUI();
+        });
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+            
+            // Close modal when clicking outside
+            if (modal.classList.contains('active')) {
+                modal.onclick = function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartTotal = document.getElementById('cartTotal');
+            const headerCartCounts = document.querySelectorAll('[data-cart-count]');
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                if (cartCount) {
+                    cartCount.textContent = totalItems;
+                    cartCount.classList.remove('hidden');
+                }
+                // Update header cart counts
+                headerCartCounts.forEach(count => {
+                    count.textContent = totalItems;
+                });
+            } else {
+                if (cartCount) {
+                    cartCount.classList.add('hidden');
+                }
+                // Update header cart counts
+                headerCartCounts.forEach(count => {
+                    count.textContent = '0';
+                });
+            }
+
+            // Update cart items display
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty"><h3>Your cart is empty</h3><p>Add some items to get started</p></div>';
+                cartFooter.style.display = 'none';
+            } else {
+                cartFooter.style.display = 'block';
+                
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-size">Size: ${item.size}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                            <div class="quantity-display">${item.quantity}</div>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                            <button class="remove-btn" onclick="removeFromCart('${item.id}')">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Update total
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `$${total.toFixed(2)}`;
+            }
+        }
+
+        function addToCart(productId, size) {
+            const product = products[productId];
+            if (!product) return;
+
+            const itemId = `${productId}-${size}`;
+            const existingItem = cart.find(item => item.id === itemId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: itemId,
+                    name: product.name,
+                    price: product.price,
+                    size: size,
+                    quantity: 1,
+                    image: product.image
+                });
+            }
+
+            updateCartUI();
+            saveCart();
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(item => item.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(itemId);
+                } else {
+                    updateCartUI();
+                    saveCart();
+                }
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartUI();
+            saveCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+            saveCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            // Calculate total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Order summary
+            let orderSummary = 'ORDER SUMMARY:\n\n';
+            cart.forEach(item => {
+                orderSummary += `${item.name} (${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: $${total.toFixed(2)}`;
+            orderSummary += '\n\nOrder placed successfully!';
+            
+            alert(orderSummary);
+            
+            // Clear cart after successful checkout
+            clearCart();
+            toggleCart();
+        }
+
+        // Make functions available globally for individual product pages
+        window.addToCart = addToCart;
+        window.updateCartUI = updateCartUI;
+    </script>
+
+    </main><!-- End main -->
+    </div><!-- End .page -->
+
+    <!-- Deferred CSS -->
+    <link href="../cdn/shop/t/64/assets/theme-deferred7095.css?v=90605793427210744251749577087" rel="stylesheet" type="text/css" media="all" />
+</body>
+</html>
